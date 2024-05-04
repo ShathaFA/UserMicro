@@ -1,0 +1,935 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: white;
+    color: black;
+}
+
+/* home section start*/
+section {
+    padding: 80px 20%;
+}
+
+.home {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    border-radius: 0% 0% 30% 0%;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem;
+    align-items: center;
+}
+
+
+.home-text h1 {
+    font-size: 50px;
+    font-weight: 800;
+    color: #543787;
+    margin: 0px 0 15px;
+    background-image: url(https://odoocdn.com/openerp_website/static/src/img/highlights/yellow_highlight_bold_05.svg);
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: bottom 0px right 0px ;
+}
+
+.intro-home {
+    font-size: 23px;
+    font-weight: 500;
+    color: rgb(255, 183, 0);
+}
+
+.home-text p {
+    color: gray;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 15px;
+
+}
+
+.btn-theme {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    border-radius: 30px;
+    font-size: 16px;
+    text-transform: capitalize;
+    transition: all 0.5s ease;
+    box-shadow: black;
+    border: 2px solid rgba(84, 55, 134, 1);
+    cursor: pointer;
+    color: rgba(84, 55, 134, 1);
+}
+
+.btn-theme:hover {
+    color: rgba(84, 55, 134, 1);
+    background-color: rgba(255, 205, 78, 1);
+
+}
+
+
+.home-img img {
+    height: auto;
+    width: 518px;
+
+}
+
+/* home section ended*/
+
+/* about section start */
+.about {
+    position: relative;
+    height: 70vh;
+    width: 90%;
+    padding-left: 10%;
+    padding-right: 3%;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-items: center;
+}
+
+.about-img img {
+    width: 100%;
+    height: auto;
+}
+
+.about-img video {
+    width: 100%;
+    height: auto;
+}
+
+.about-text h2 {
+    line-height: 0.5;
+    color: black;
+    background-image: url(https://odoocdn.com/openerp_website/static/src/img/graphics/underline.svg);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    padding: 5%;
+    font-size: 60px;
+    font-weight: 200;
+    background-position: center;
+    text-align: center;
+}
+
+.about-text p {
+    font-size: var(--p-font);
+    color: black;
+    font-weight: 500;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+
+/* about section ended*/
+
+/* funders section start */
+.funders {
+    padding: 5vw 6vw 5vw 6vw;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    border-radius: 30% 0% 0% 0%;
+}
+
+.funders .fiun-title { 
+    line-height: 0.5;
+    color: black;
+    background-image: url(https://odoocdn.com/openerp_website/static/src/img/graphics/underline.svg);
+    background-repeat: no-repeat;
+    background-size: 45%;
+    padding: 3%;
+    font-size: 60px;
+    font-weight: 200;
+    background-position: center;
+    text-align: center;
+}
+
+.funders .expert-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /*to make the boxes in one row  */
+    grid-gap: 1.1rem;
+    margin-top: 50px;
+}
+
+.funders .expert-box .profile {
+    background: rgb(255, 255, 255);
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+    border-right: 0.1rem solid rgba(84, 55, 134, 1);
+
+}
+
+.funders .expert-box .profile:hover {
+    transform: scale(1.05);
+}
+
+.profile .foun-name {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: rgb(255, 183, 0);
+    padding: 20px 0 7px 0;
+    padding-bottom: 10px;
+}
+
+.profile .foun-job {
+    font-size: 1rem;
+    font-weight: 00;
+    color: rgb(8, 1, 15);
+}
+
+.pro-links {
+    margin-top: 10px;
+}
+
+.pro-links i {
+    padding: 10px 13px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.pro-links i:hover {
+    background: rgb(252, 206, 89);
+    ;
+    color: rgba(255, 205, 78, 1);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* funders section ended*/
+
+/*  features section start */
+
+.features {
+    padding: 5vw 6vw 5vw 6vw;
+    text-align: center;
+    background-color: rgb(232, 238, 247);
+
+}
+
+.features .fea-base {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /*to make the boxes in one row  */
+    grid-gap: 1.1rem;
+    margin-top: 50px;
+}
+
+.features .fea-box {
+    background: rgb(255, 255, 255);
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+}
+
+.features .fea-box:hover {
+    transform: scale(1.05);
+}
+
+.features .fea-box i {
+    font-size: 2rem;
+    color: rgb(44, 44, 80);
+    padding-bottom: 10px;
+}
+
+.features .fea-box h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(255, 183, 0);
+    padding: 13pcx 0 7px 0;
+    padding-bottom: 10px;
+}
+
+.features .fea-box p {
+    font-size: 1rem;
+    font-weight: 00;
+    color: rgb(8, 1, 15);
+
+}
+
+.features .feature-title {
+    line-height: 0.5;
+    color: black;
+    background-image: url(https://odoocdn.com/openerp_website/static/src/img/graphics/underline.svg);
+    background-repeat: no-repeat;
+    background-size: 45%;
+    padding: 3%;
+    font-size: 60px;
+    font-weight: 200;
+    background-position: center;
+    text-align: center;
+}
+
+.features .feature-title-p {
+    font-size: 25px;
+    font-weight: 300px;
+}
+
+/* features section ended*/
+
+/*   features 1 section start */
+
+.section-padding {
+    padding: 5px 80px 15px 80px;
+}
+
+.owl-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /*to make the boxes in one row  */
+    grid-gap: 1.1rem;
+    margin-top: 50px;
+}
+
+.section-title {
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    color: black;
+    font-weight: 350;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.section-title h2 span {
+    color: rgba(84, 55, 134, 1);
+    text-decoration: underline;
+}
+
+.features1 .feature-item {
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+}
+
+.features1 .feature-item::before,
+.features1 .feature-item::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.features1 .feature-item::before {
+    height: 20px;
+    width: 20px;
+    background-color: rgba(255, 235, 174, 1);
+    left: -2px;
+    top: 40%;
+}
+
+.features1 .feature-item:hover::before {
+    left: 10px;
+    opacity: 1;
+}
+
+.features1 .feature-item::after {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(124, 184, 192, 1);
+    right: -30px;
+    top: 80%;
+}
+
+.features1 .feature-item:hover::after {
+    opacity: 1;
+    right: -13px;
+}
+
+.features1 .feature-item .icon {
+    height: 60px;
+    width: 60px;
+    margin: 0 auto 10px;
+    text-align: center;
+    /* background-color: red; */
+    font-size: 30px;
+    color: #543787;
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.features1 .feature-item .icon::before {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: -18px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(84, 55, 134, 1);
+    transition: all 0.5s ease;
+    z-index: -1;
+    opacity: 0;
+    /*to make the circlr disapeare*/
+}
+
+.features1 .feature-item:hover .icon {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.features1 .feature-item:hover .icon::before {
+    left: 0;
+    border-radius: 50%;
+    opacity: 1;
+    /*to make the circlr disapeare when hover it*/
+}
+
+.features1 .feature-item h3 {
+    font-size: 22px;
+    margin: 0 0 20px;
+    color: blue;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.features1 .feature-item p {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 300;
+    color: black;
+    margin: 0 0 15px;
+}
+
+/* features 1 section ended*/
+
+/*   course section start */
+.course {
+    text-align: center;
+    background-image: url(https://www.odoo.com/web_editor/shape/illustration%2Fdoodle%2F02.svg?c5=%23F2BB62);
+    background-size: 150%;
+    padding-top: 0;
+    
+}
+
+.course .courses .details {
+    padding: 0 15px 0 15px;
+    text-align: center;
+    font-weight: 600;
+
+}
+
+.course .courses .more-details h6 {
+    padding: 10px 10px 0 22px;
+    display: inline-block;
+    color: gray;
+    font-weight: 400;
+}
+
+.course h2 {
+    font-size: 40px;
+    color: black;
+    font-weight: 350;
+    text-transform: capitalize;
+    text-align: center;
+
+}
+
+.course h2 span {
+    color: rgba(84, 55, 134, 1);
+    text-decoration: underline;
+    font-size: 3.2rem;
+    line-height: 6.5rem;
+
+}
+
+.course-section {
+    max-width:100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.course-info {
+    width: calc(33.33% - 20px);
+    /* Adjusted width for each course with 20px gap */
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    /* Adjusted margin to create space between rows */
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.course-info:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.course-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.course-details {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-details p {
+    margin: 5px 0;
+}
+
+.course-image {
+    max-width: 100%;
+    height: 40%;
+    /* Ensures the image maintains its aspect ratio */
+    border-radius: 8px;
+    margin-bottom: 10px;
+    /* Add some space between the image and other content */
+}
+
+/* /*   course section end */
+
+/*=============== BREAKPOINTS ===============*/
+/* For iPad 768*1024*/
+@media (max-width: 769px) {
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        list-style: none;
+        text-decoration: none;
+        scroll-behavior: smooth;
+    }
+
+    .home-img img {
+        height: auto;
+        width: 350px;
+        padding-right: 0px;
+        margin-right: 0;
+    }
+
+    .about {
+        width: 95%;
+        padding-left: 3%;
+        padding-right: 0%;
+        grid-template-columns: repeat(2.1, 1fr);
+
+    }
+
+    .about-text h2 {
+        font-size: 40px;
+    }
+
+    .course .course-box {
+        grid-gap: 3.5rem;
+
+    }
+
+    .course .courses .more-details {
+        padding: 0 15px 15px 0px;/* General styling */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+            list-style: none;
+            text-decoration: none;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: white;
+            color: black;
+        }
+        
+        /* Home section */
+        .home {
+            padding: 80px 10%;
+            text-align: center;
+        }
+        
+        .home-text h1 {
+            font-size: 24px;
+            font-weight: 900;
+            color: rgba(84, 55, 134, 1);
+            margin: 15px 0;
+            background-image: url(https://odoocdn.com/openerp_website/static/src/img/highlights/yellow_highlight_bold_05.svg);
+            background-repeat: no-repeat;
+            background-size: 85%;
+        }
+        
+        .home-text h6 {
+            font-size: 16px;
+            font-weight: 500;
+            color: rgb(255, 183, 0);
+        }
+        
+        .home-text p {
+            color: gray;
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .home-img img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* About section */
+        .about {
+            padding: 5vw 3vw;
+            text-align: center;
+        }
+        
+        .about-img img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .about-text h2 {
+            font-size: 24px;
+        }
+        
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Features section */
+        .features1 {
+            padding: 5vw 3vw;
+        }
+        
+        .features-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            background-color: rgb(232, 238, 247);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .feature-item h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-item p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Course section */
+        .course {
+            padding: 5vw 3vw;
+            text-align: center;
+        }
+        
+        .course h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .course-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .course-info {
+            flex: 1 1 calc(33.33% - 20px);
+            max-width: calc(33.33% - 20px);
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .course-info:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .course-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .course-details p {
+            margin: 5px 0;
+        }
+        
+        .course-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        /* Funders section */
+        .funders {
+            padding: 5vw 3vw;
+            text-align: center;
+            background-color: rgb(232, 238, 247);
+        }
+        
+        .funders .fiun-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .expert-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .profile {
+            flex: 1 1 calc(25% - 20px);
+            max-width: calc(25% - 20px);
+            background: rgb(255, 255, 255);
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .profile:hover {
+            transform: scale(1.05);
+        }
+        
+        .foun-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(255, 183, 0);
+            margin-bottom: 5px;
+        }
+        
+        .foun-job {
+            font-size: 14px;
+            color: rgb(8, 1, 15);
+            margin-bottom: 10px;
+        }
+        
+        .pro-links i {
+            font-size: 24px;
+            padding: 10px;
+            color: #543786;
+            transition: 0.3s ease;
+        }
+        
+        .pro-links i:hover {
+            background: rgb(252, 206, 89);
+            color: rgba(255, 205, 78, 1);
+            border-radius: 50%;
+        }
+        
+        /* Media queries */
+        @media (max-width: 769px) {
+            .home {
+                padding: 80px 5%;
+            }
+        
+            .home-text h1 {
+                font-size: 20px;
+            }
+        
+            .home-text h6 {
+                font-size: 14px;
+            }
+        
+            .home-text p {
+                font-size: 14px;
+            }
+        
+            .about-text h2 {
+                font-size: 20px;
+            }
+        
+            .about-text p {
+                font-size: 14px;
+            }
+        
+            .feature-item h3 {
+                font-size: 16px;
+            }
+        
+            .feature-item p {
+                font-size: 12px;
+            }
+        
+            .course h2 {
+                font-size: 20px;
+            }
+        
+            .course-info {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        
+            .funders .fiun-title {
+                font-size: 20px;
+            }
+        
+            .foun-name {
+                font-size: 18px;
+            }
+        
+            .foun-job {
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .home-text h1 {
+                font-size: 18px;
+            }
+        
+            .home-text h6 {
+                font-size: 12px;
+            }
+        
+            .home-text p {
+                font-size: 12px;
+            }
+        
+            .about-text h2 {
+                font-size: 18px;
+            }
+        
+            .about-text p {
+                font-size: 12px;
+            }
+        
+            .feature-item h3 {
+                font-size: 14px;
+            }
+        
+            .feature-item p {
+                font-size: 10px;
+            }
+        
+            .course h2 {
+                font-size: 18px;
+            }
+        
+            .course-info {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        
+            .funders .fiun-title {
+                font-size: 18px;
+            }
+        
+            .foun-name {
+                font-size: 16px;
+            }
+        
+            .foun-job {
+                font-size: 10px;
+            }
+        }
+        
+        background: rgb(232, 238, 247);
+        display: inline-block;
+
+    }
+
+    .funders .fiun-title {
+        font-size: 40px;
+
+    }
+
+}
+@media (max-width: 390px) {
+    .home {
+        padding: 60px 5%;
+    }
+
+    .home-text h1 {
+        font-size: 16px;
+    }
+
+    .home-text h6 {
+        font-size: 10px;
+    }
+
+    .home-text p {
+        font-size: 10px;
+    }
+
+    .about-text h2 {
+        font-size: 16px;
+    }
+
+    .about-text p {
+        font-size: 10px;
+    }
+
+    .feature-item h3 {
+        font-size: 12px;
+    }
+
+    .feature-item p {
+        font-size: 8px;
+    }
+
+    .course h2 {
+        font-size: 16px;
+    }
+
+    .course-info {
+        flex: 1 1 calc(100% - 20px);
+        max-width: calc(100% - 20px);
+    }
+
+    .funders .fiun-title {
+        font-size: 16px;
+    }
+
+    .foun-name {
+        font-size: 14px;
+    }
+
+    .foun-job {
+        font-size: 8px;
+    }
+}
+

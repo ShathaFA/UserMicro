@@ -1,0 +1,88 @@
+/* General Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Down Panel Styles */
+.dwon-panel {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 160px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title */
+.dwon-panel .title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #FEB737;
+}
+
+/* List */
+.dwon-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* List Items */
+.dwon-panel li {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dwon-panel h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dwon-panel p {
+    font-size: 36px;
+    margin: 10px 0;
+    color: #543787;
+}
+
+/* Buttons */
+.dwon-panel button {
+    background-color: #543787;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.dwon-panel button:hover {
+    background-color: #FEB737;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .dwon-panel ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dwon-panel li {
+        flex-basis: 80%;
+    }
+}

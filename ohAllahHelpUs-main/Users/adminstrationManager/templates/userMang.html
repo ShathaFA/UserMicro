@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Users Accounts</title>
+  <link rel="stylesheet" href="{% static 'css/userManage.css' %}" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <script src="{% static 'js/usrMngr.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <a href="{% url 'AdminPanel' %}"><button class="go-back-AdminPanel">
+      Admin Panel
+    </button></a>
+    <h1 class="title">Manage Users Accounts</h1>
+
+    <!-- Search bar -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button class="userSearch">Search</button>
+      <button class="userAdd" id="createCourseBtn">Add</button> <!-- Changed to a button -->
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Full name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- You would fetch data from the database and generate rows dynamically -->
+        
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Popup for rejection reason -->
+  <div id="popup" class="popup">
+    <span class="popup-close" onclick="closePopup()">&#10006;</span>
+    <div class="popup-title">Delete Account</div>
+    <div class="popup-box">
+      <p class="popup-message" style="color: #EA7D7D;">Are you sure you want to delete the account?</p>
+      <button class="popup-delete-button">Delete</button>
+    </div>
+  </div>
+
+  <div id="createCourseModal" class="modal">
+
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="title-create-account">Craete New User Account<i class="fa-solid fa-microphone-lines"
+          style="color: #D4E0F0;"></i></h2>
+      <form>
+        {% csrf_token %}
+        <label class="label-userMang" for="firstname">First Name:</label>
+        <input class="fname" type="text" id="first_name" name="first_name">
+
+        <label class="label-userMang" for="lastname">Last Name:</label>
+        <input required class="Lname" type="text" id="last_name" name="last_name" >
+
+        <label required class="label-userMang" for="email">Email:</label>
+        <input class="email" type="email" id="email" name="email" >
+
+        <label required class="label-userMang" for="password1">Password:</label>
+        <input class="password1" type="password" id="password1" name="password1" >
+        <br>
+        <br>
+        <label required class="label-userMang" for="password2">Re-Enter Your Password:</label>
+        <input class="password2" type="password" id="password2" name="password2" >
+        <br>
+        <br>
+
+        <label required class="label-userMang"  for="birthday">Birth Date: </label>
+        <input class="date" type="date" id="date" name="birthday">
+        <br>
+
+        <label class="label-userMang" for="Role">Role:</label>
+        <select class="minimal">
+          <option value="teacher">Eduactor</option>
+          <option value="student">Student</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <br>
+        <button type="submit" class="createUserBtn">Add user</button>
+      </form>
+    </div>
+
+  </div>
+  <script>
+    // Function to close the popup
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    // Get the deny action icons
+    const denyIcons = document.querySelectorAll('.deny');
+
+    // Get the popup element
+    const popup = document.getElementById('popup');
+
+    // Attach click event listener to each deny icon
+    denyIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        // Display the popup when the icon is clicked
+        popup.style.display = 'block';
+      });
+    });
+
+    // Close the popup when clicking outside of it
+    window.addEventListener('click', (event) => {
+      if (event.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+
+    // Prevent the popup from closing when clicking inside it
+    popup.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  </script>
+  <script>
+    // Get the button that opens the modal
+    var createCourseBtn = document.getElementById("createCourseBtn");
+
+    // Get the modal element
+    var createCourseModal = document.getElementById("createCourseModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    createCourseBtn.onclick = function () {
+      createCourseModal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      createCourseModal.style.display = "none";
+    }
+
+    // When the user clicks outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == createCourseModal) {
+        createCourseModal.style.display = "none";
+      }
+    }
+
+
+//For adding users
+$(document).ready(function(){
+  // Function to get the CSRF token from the cookies
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  
+  $(".createUserBtn").click(function(e){
+    e.preventDefault();
+    
+    var csrftoken = getCookie('csrftoken');  // Get the CSRF token from the cookies
+
+    var userData = {
+      first_name: $("#first_name").val(),
+      last_name: $("#last_name").val(),
+      email: $("#email").val(),
+      password1: $("#password1").val(),
+      password2: $("#password2").val(),
+
+      birthday: $("#date").val(),
+      role: $(".minimal").val(),
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "userMang/api/create_user/",
+      data: JSON.stringify(userData),
+      contentType: "application/json",
+      dataType: "json",
+      // Include the CSRF token in the request header
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      },
+      success: function(response) {
+          // Close modal and clear form
+  createCourseModal.style.display = "none";
+  // Optionally, clear the form fields
+  $("#createCourseModal form")[0].reset();
+  // Inform the user
+  alert("User created successfully!");
+      },
+      error: function(err) {
+          // Log error or inform the user
+  console.error("Error creating user:", err);
+  alert("Failed to create user.");
+      }
+    });
+  });
+});
+  </script>
+</body>
+
+</html>

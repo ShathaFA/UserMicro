@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educator Requests</title>
+    <link rel="stylesheet" href="{% static 'css/EduRequest.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <a href="{% url 'AdminPanel' %}"><button class="go-back-AdminPanel">
+                Admin Panel
+            </button></a>
+        <h1 class="title">Educator Requests</h1>
+
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Educator Name</th>
+                    <th>Request Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="educatorList">
+                <!-- Educators will be loaded here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Popup for rejection reason -->
+    <div id="popup" class="popup">
+        <div class="popup-title">Add the rejection reason</div>
+        <div class="popup-box">
+            <span class="write-here-text">Write here</span>
+            <textarea class="popup-input" rows="4"></textarea>
+            <button class="popup-submit" onclick="closePopup()">Done</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Get the deny action icons
+        const denyIcons = document.querySelectorAll('.deny');
+
+        // Get the popup element
+        const popup = document.getElementById('popup');
+
+        // Attach click event listener to each deny icon
+        denyIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                // Display the popup when the icon is clicked
+                popup.style.display = 'block';
+            });
+        });
+
+        // Close the popup when clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+
+        // Prevent the popup from closing when clicking inside it
+        popup.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    </script>
+
+    <script type="text/javascript">
+        var csrftoken = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'js/eduRequest.js' %}"></script>
+</body>
+
+</html>

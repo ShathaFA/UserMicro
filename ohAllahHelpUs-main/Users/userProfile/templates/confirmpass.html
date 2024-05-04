@@ -1,0 +1,93 @@
+{% load static %}
+{% block content %}
+<title>Set New Password</title>
+<link rel="stylesheet" href="{% static 'css/confirmpass.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="Bigcontainer">
+    <div class="Setpasswordleft-container">
+        <img src="{% static 'images/Resetpassword-img.png' %}" alt="Set new Password Image">
+    </div>
+    <div class="Setpasswordright-container">
+        <div class="contentNewpassword">
+            <h1>Set New Password</h1>
+            <form id="setNewPassForm" action="{% url 'password-reset-confirm' uidb64=uidb64 token=token %}">
+                {% csrf_token %}
+                <input type="hidden" id="uid" name="uidb64" value="{{ uidb64 }}">
+    <input type="hidden" id="token" name="token" value="{{ token }}">
+
+                <div class="Newpassinput">
+                    <input name="new_password" class="setpass" type="password" id="newPassword" required />
+                    <label for="newPassword" class="new-password">New Password</label>
+                    <i class="toggle-password fas fa-eye-slash" data-target="newPassword"></i>
+                </div>
+                <div class="Newpassinput">
+                    <input name="new_password2"  class="resetpass" type="password" id="newPassword2" required />
+                    <label for="newPassword2" class="confirm-password">Confirm Password</label>
+                    <i class="toggle-password fas fa-eye-slash" data-target="newPassword2"></i>
+                </div>
+                <button type="submit" id="setNewPassButton">Set New Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.toggle-password').forEach(function (icon) {
+        icon.addEventListener('click', function () {
+            var targetId = this.getAttribute('data-target');
+            var targetInput = document.getElementById(targetId);
+            if (targetInput.type === 'password') {
+                targetInput.type = 'text';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            } else {
+                targetInput.type = 'password';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $("#setNewPassForm").submit(function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            
+            var csrftoken = $('[name=csrfmiddlewaretoken]').val(); // Define csrftoken here
+            var uid = $("#uid").val();
+            var token = $("#token").val();
+            var newPassword = $("#newPassword").val();
+            var newPassword2 = $("#newPassword2").val();
+        
+            if(newPassword !== newPassword2) {
+                alert("Passwords do not match.");
+                return; // Stop the function here
+            }
+        
+            $.ajax({
+                url: "/userProfile/password-reset-confirm/" + uid + "/" + token + "/", // Ensure this matches your URL patterns
+                type: "POST",
+                data: JSON.stringify({
+                    new_password: newPassword,
+                   }),
+                contentType: "application/json",
+                headers: {'X-CSRFToken': csrftoken}, // Set CSRF token in headers for Django
+                success: function(response) {
+                    console.log(response); // For debugging: Log the entire response to the console
+
+                    alert(response.message);
+                    // Optionally redirect the user or update the UI
+                },
+                error: function(xhr, errmsg, err) {
+                    alert(xhr.responseJSON.error);
+                }
+            });
+        });
+    });
+</script>
+    
+
+{% endblock %}

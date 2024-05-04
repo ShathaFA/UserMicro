@@ -1,0 +1,91 @@
+#quiz-container {
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    padding: 30px;
+    max-width: 100%;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #543787;
+    font-size: 45px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.question-container {
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+p{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.question {
+    font-weight: 800;
+    color: #FEB737;
+    margin-bottom: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f2f6fa;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #e2eaf1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.option label {
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.option input[type="text"]{
+    width: 100%;
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    cursor: pointer;
+}
+
+option input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #543787;
+    align-items: center;
+}
+
+.submit {
+    display: block;
+    width: 100%; /* By default, take up full width */
+    max-width: 200px; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the button and add some spacing */
+    padding: 14px;
+    background-color: #543787;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #FEB737;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,252 @@
+{% block content %} {% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registration page</title>
+<link rel="stylesheet" href="{% static 'css/signup_style.css' %}" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet"
+/>
+<script src="{% static 'js/signupScript.js' %}"></script>
+
+<div class="container">
+  <div class="container__left">
+    <h1>WELCOME to Mindscape Academy!</h1>
+    <p class="signup-into">
+      Elevate your learning journey with innovative techniques revolutionizing
+      your educational experience.
+    </p>
+    <img
+      src="{% static 'images/signup-img2.png' %}"
+      alt="this is the sign-up page"
+      style="width: 100%; max-width: 500px; margin-top: 30px; margin-bottom: 0"
+    />
+  </div>
+
+  <div class="container__right">
+    <div class="content">
+      <img
+        class="logo-remove"
+        src="{% static 'images/logo-remove.png' %}"
+        alt="logo"
+      />
+      <p class="header">Create an Account</p>
+
+      <form id="signupForm" method="POST" action="UserSignUpView" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="inputsignup_field">
+          <input id="first_name" name="first_name" type="text" required />
+          <label for="firstName">First Name</label>
+        </div>
+        <div class="inputsignup_field">
+          <input id="last_name" name="last_name" type="text" required />
+          <label for="lastName">Last Name</label>
+        </div>
+
+        <div class="inputsignup_field">
+          <input type="email" id="email" name="email" required />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="inputsignup_field">
+          <input
+            type="password"
+            class="passwordInput"
+            name="password1"
+            id="password1"
+            required
+          />
+          <label for="password">Enter your password</label>
+          <i
+            class="fas fa-eye-slash"
+            id="PasswordIcon"
+            onclick="togglePasswordVisibility('password1', 'PasswordIcon')"
+          ></i>
+        </div>
+
+        <div class="inputsignup_field">
+          <input type="password" name="password2" id="password2" required />
+          <label for="password2">Re-Enter your password</label>
+          <i
+            class="fas fa-eye-slash"
+            id="ConfirmPasswordIcon"
+            onclick="togglePasswordVisibility('password2', 'ConfirmPasswordIcon')"
+          ></i>
+        </div>
+
+        <div class="inputsignup_field">
+          <input id="birthday" name="birthday" type="date" required />
+          <label for="birthdate">Birth Date</label>
+        </div>
+
+        <div class="inputsignup_field">
+          <select required id="roleSelect" onchange="toggleAdditionalFields()">
+            <option value="" disabled selected>Select Role</option>
+            <option value="student">Student</option>
+            <option value="teacher">Educator</option>
+          </select>
+          <label class="chosserole" for="role">Role</label>
+        </div>
+
+
+        <div
+          class="inputsignup_field"
+          id="additionalFields"
+          style="display: none"
+        >
+          <input id="areasOfSpec" name="areaOfSpec" type="text" />
+          <label for="specializations">Area of Specializations</label>
+        </div>
+
+
+        <div
+        class="inputsignup_field"
+        id="additionalFields"
+        style="display: none"
+      >
+        <input name="professional_title" type="text" id="professionalTitle" />
+        <label for="professional_title">Professional Title</label>
+      </div>
+
+        <div
+          class="inputsignup_field"
+          id="additionalFields"
+          style="display: none"
+        >
+          <input id="company" name="company" type="text" />
+          <label for="company">Company</label>
+        </div>
+
+        <div
+          class="inputsignup_field"
+          id="additionalFields"
+          style="display: none"
+        >
+          <input name="linkedInAcc" type="url" id="linkedInAcc" />
+          <label for="linkedin">LinkedIn Account</label>
+        </div>
+
+        <div class="inputsignup_field">
+          <p class="profile-label">Profile Image</p>
+          <label for="inputfile" id="label1">Upload</label>
+          <input
+            class="input1"
+            type="file"
+            id="inputfile"
+            accept="image/*"
+            name="profile_pic"
+            onchange="displayFileName()"
+          />
+          <span id="file-name"></span>
+        </div>
+
+        <button>Sign Up</button><br />
+        <p class="create__account">
+          Already have an account? <a href="{% url 'login_page' %}">Sign In</a>
+        </p>
+      </form>
+
+      <div class="popup-overlay" id="popup">
+        <div class="popup">
+          <h3 class="popMsg">POP-UP Message</h3>
+          <p>
+            <span style="font-weight: bold; font-size: 1.3rem"
+              >THANK YOU 🤗🎧</span
+            ><br /><br />We are Happy for having you here<br />we will review
+            your account information and process your request to assign you for
+            your role 🧑‍💻💫<br />we will notify you soon via email , Stay Tuned
+            ..... ⏳
+          </p>
+          <button class="ok-button" id="ok-button" onclick="closePopup()">Ok</button>
+          <span class="cancel-button" onclick="closePopup()">✖</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    function togglePasswordVisibility(inputId, iconId) {
+      var password1 = document.getElementById(inputId);
+      var togglePasswordIcon = document.getElementById(iconId);
+
+      if (password1.type === "password") {
+          password1.type = "text";
+        togglePasswordIcon.classList.remove("fa-eye-slash");
+        togglePasswordIcon.classList.add("fa-eye");
+      } else {
+          password1.type = "password";
+        togglePasswordIcon.classList.remove("fa-eye");
+        togglePasswordIcon.classList.add("fa-eye-slash");
+      }
+    }
+
+    function displayFileName() {
+      var input = document.getElementById("inputfile");
+      var fileName = input.files[0].name;
+      document.getElementById("file-name").textContent = fileName;
+    }
+
+    // Function to show/hide additional fields based on role selection
+    function toggleAdditionalFields() {
+      var roleSelect = document.getElementById("roleSelect");
+      var additionalFields = document.querySelectorAll(
+        ".inputsignup_field#additionalFields"
+      );
+
+      if (roleSelect.value === "teacher") {
+        additionalFields.forEach(function (field) {
+          field.style.display = "block";
+        });
+      } else {
+        additionalFields.forEach(function (field) {
+          field.style.display = "none";
+        });
+      }
+    }
+
+    document.getElementById("ok-button").addEventListener("click", function () {
+    window.location.href = '{% url "login_page" %}';
+  });
+
+//new script tts
+  document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Assuming form validation and submission are successful
+    const message = `THANK YOU. We are happy for having you here. We will review your account information and process your request to assign you for your role. We will notify you soon via email. Stay Tuned.`;
+
+    // Text-to-Speech function
+    const speakText = (text) => {
+      const speech = new SpeechSynthesisUtterance();
+      speech.text = text;
+      speech.volume = 1;
+      speech.rate = 1;
+      speech.pitch = 1;
+      speech.lang = 'en-US'; // Set the language as needed
+
+      speechSynthesis.speak(speech);
+    };
+
+    speakText(message); // Call the TTS function with the message
+
+    // Display the pop-up or redirect as needed
+    document.getElementById('popup').style.display = 'block';
+  });
+
+  document.getElementById('ok-button').addEventListener('click', function() {
+    window.location.href = '{% url "login_page" %}';
+  });
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+{% endblock %}

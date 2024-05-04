@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+    --primary-color: rgb(232, 238, 247);
+    --secondary-color: #717775;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.container__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+}
+
+
+.container__left h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-top: 95px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.container__left p {
+    max-width: 500px;
+    font-size: 1rem;
+    text-align: center;
+    color: black;
+    margin-bottom: -55px;
+}
+
+.container__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    width: 100%;
+    max-width: 350px;
+    display: grid;
+    gap: 1rem;
+}
+
+.logo-remove {
+    max-width: 150px;
+    margin: auto;
+    margin-bottom: 0.5rem;
+}
+
+.header {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+}
+
+form {
+    display: grid;
+}
+
+.inputsignup_field {
+    position: relative;
+    margin: 0.5rem 0;
+    /* Adjust margin to reduce spacing */
+    display: flex;
+    align-items: center;
+}
+
+
+form label {
+    position: absolute;
+    top: 3px;
+    /* Adjust vertical position */
+    left: 0;
+    transform: translateY(-70%);
+    font-size: 0.9rem;
+    color: #717775;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+form input,
+form select {
+    padding: 0.3rem 0.5rem 0.3rem 0;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--secondary-color);
+    line-height: 13px;
+    height: 2.5rem;
+}
+
+form input:not(:placeholder-shown)~label,
+form input:focus~label {
+    top: 8px;
+    font-size: 0.8rem;
+}
+
+form p {
+    margin-bottom: 1.5rem;
+} 
+
+form p a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(84, 55, 134, 1);
+    text-decoration: none;
+}
+
+form button {
+    padding: 0.75rem 3rem;
+    max-width: fit-content;
+    margin: auto;
+    outline: none;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: rgba(84, 55, 134, 1);
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    text-transform: capitalize;
+    transition: all 0.5s ease;
+    box-shadow: black;
+}
+
+form button:hover {
+    color: rgba(84, 55, 134, 1);
+    background-color: rgba(255, 205, 78, 1);
+}
+
+#label1 {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    display: block;
+    width: 100px;
+    background: #f0eff2;
+    color: rgb(144, 143, 143);
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 121px;
+}
+
+.input1 {
+    position: absolute;
+    opacity: 0;
+    /* Hide the original input button */
+    width: 100%;
+    /* Match the width of the label */
+    height: 100%;
+    /* Match the height of the label */
+    cursor: pointer;
+}
+
+.profile-label {
+    font-size: 0.9rem;
+    color: #717775;
+}
+
+/* Add this CSS to style the password hide/show icons */
+#PasswordIcon,
+#ConfirmPasswordIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+
+.create__account {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Add this CSS to style the pop-up */
+.popup-overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background-color: #ffffff;
+    border: 2px solid var(--secondary-color);
+    width: 500px;
+    max-width: 90%;
+    height: auto;
+    padding: 30px;
+    padding-left: 40px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.popup p {
+    padding-top: 16px;
+    padding-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.ok-button {
+    background-color: #543786;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 20px;
+    color: #543786;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    color: #543786;
+}
+
+@media (max-width: 788px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .container__left,
+    .container__right {
+        min-height: 100vh;
+    }
+}
+
+#educatorFields {
+    transition: opacity 0.5s, max-height 0.5s;
+    overflow: hidden;
+    max-height: 0;  /* Initial state */
+    opacity: 0;  /* Initial state */
+}
+
+#educatorFields {
+    transition: opacity 0.5s, max-height 0.5s;
+    overflow: hidden;
+    max-height: 0;  /* Initial state */
+    opacity: 0;  /* Initial state */
+}

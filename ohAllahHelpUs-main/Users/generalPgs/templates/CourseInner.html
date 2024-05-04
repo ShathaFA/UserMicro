@@ -1,0 +1,281 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Second Page Of Course Create</title>
+    <!-- custom link -->
+    <link rel="stylesheet" href="{% static 'css/CourseInner.css' %}" />
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- font aw icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Quill.js CSS -->
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+    <!-- Quill.js library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  </head>
+  <body>
+    <div class="btn">
+      <span class="fas fa-bars"></span>
+    </div>
+
+    <!-- start the sidebar section -->
+    <nav class="sidebar">
+      <!--name of the sidebar, which is the name of the course  -->
+      <div id="courseTitle" class="text courseTitle"></div>
+      <!-- sections + lessons part -->
+      <button class="btn-theme" id="createSectionBtn">Add New Section</button>
+      <ul></ul>
+    </nav>
+
+    <div class="course-content" style="display: none">
+      <img class="coures-inner-img" src="" alt="" />
+      <div class="header">
+        <h1 class="Course-Title"></h1>
+        <div class="courese-info">
+          <h3 class="Course-topic"></h3>
+          <h3 class="Course-deficality"></h3>
+        </div>
+        <p class="Course-description"></p>
+      </div>
+    </div>
+
+    <!-- for edit lesson  -->
+    <div class="modal" id="editLessonModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="title-edit-Lesson">
+          Edit Lesson Title<i
+            class="fa-solid fa-microphone-lines"
+            style="color: #513886"
+          ></i>
+        </h2>
+        <form id="editLessonForm">
+          <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="{{ csrf_token }}"
+          />
+          <label class="label-Course" for="editlessonTitle"
+            >Lesson Title:</label
+          >
+          <input
+            class="Ctext"
+            type="text"
+            id="editlessonTitle"
+            name="editlessonTitle"
+            placeholder="Enter lesson title.."
+          />
+          <button type="submit" class="editLessonBtn">Edit</button>
+        </form>
+      </div>
+    </div>
+
+  <!-- for add section  -->
+  <div class="modal" id="createSectionModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="title-create-Section">
+        Add New Section<i
+          class="fa-solid fa-microphone-lines"
+          style="color: #513886"
+        ></i>
+      </h2>
+      <form id="sectionForm">
+        <input
+          type="hidden"
+          name="csrfmiddlewaretoken"
+          value="{{ csrf_token }}"
+        />
+          <label class="label-Course" for="sectionTitle">Section Title: <i class="fa-solid fa-microphone-lines microphone-icon" data-target="sectionTitle"></i></label>
+          <div class="input-with-microphone">
+            <input
+              class="Ctext"
+              type="text"
+              id="sectionTitle"
+              name="sectionTitle"
+              placeholder="Enter section title.."
+              style="text-align: left;"
+            />
+          </div>
+        
+        <label class="label-Course" for="sectionDesc">Section Description: <i class="fa-solid fa-microphone-lines microphone-icon" data-target="sectionDesc"></i></label>
+        <div class="input-with-microphone">
+          <input
+            class="Ctext"
+            type="text"
+            id="sectionDesc"
+            name="course-description"
+            placeholder="Enter section description.."
+          />
+        </div>
+        <button type="submit" class="createSectionBtn">Create</button>
+      </form>
+    </div>
+  </div>
+
+    <!-- for edit section  -->
+    <div class="modal" id="editSectionModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="title-edit-Section">
+          Edit Section<i
+            class="fa-solid fa-microphone-lines"
+            style="color: #513886"
+          ></i>
+        </h2>
+        <form id="editSectionForm">
+          <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="{{ csrf_token }}"
+          />
+          <label class="label-Course" for="editSectionTitle"
+            >Section Title:</label
+          >
+          <input
+            class="Ctext"
+            type="text"
+            id="editSectionTitle"
+            name="editSectionTitle"
+            placeholder="Enter section title.."
+          />
+          <label class="label-Course" for="editSectionDesc"
+            >Section Description:</label
+          >
+          <input
+            class="Ctext"
+            type="text"
+            id="editSectionDesc"
+            name="editSectionDesc"
+            placeholder="Enter section description.."
+          />
+          <button type="submit" class="editSectionBtn">Edit</button>
+        </form>
+      </div>
+    </div>
+
+  <!-- for add lesson  -->
+  <div class="modal" id="createLessonModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="title-create-Lesson">
+        Add New Lesson<i
+          class="fa-solid fa-microphone-lines"
+          style="color: #513886"
+        ></i>
+      </h2>
+      <form id="lessonForm">
+        <input
+          type="hidden"
+          name="csrfmiddlewaretoken"
+          value="{{ csrf_token }}"
+        />
+        <label class="label-Course" for="lessonTitle">Lesson Title:  <i class="fa-solid fa-microphone-lines microphone-icon" data-target="lessonTitle"></i></label>
+        <div class="input-with-microphone">
+        <input
+          class="Ctext"
+          type="text"
+          id="lessonTitle"
+          name="lessonTitle"
+          placeholder="Enter lesson title.."
+        />
+      </div>
+          <button type="submit" class="createLessonBtn">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <br />
+    <!-- for the editor -->
+    <div action="" class="form1" style="display: none">
+      <!-- Replace the input field with textarea -->
+      <!-- Add a div to hold the Quill editor -->
+      <div id="editor-container"></div>
+      <!-- Add buttons for voice input and editor control -->
+      <button id="voiceInputBtn"><i class="fa-solid fa-microphone-lines microphone-icon" data-target="lessonTitle"></i></button>
+      <button id="editBtn" class="btn-theme-inner">Edit</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- custom js link -->
+    <script src="{% static 'js/CourseInner.js' %}"></script>
+
+    <!-- JavaScript code for speech recognition and editor control -->
+    <script>
+
+      // Function to handle speech recognition and insert text into Quill editor
+      function handleVoiceInput() {
+        const recognition = new webkitSpeechRecognition(); // Use appropriate speech recognition object based on the API you're using
+        recognition.lang = "en-US"; // Set the language for recognition
+
+        recognition.onresult = function (event) {
+          const transcript = event.results[0][0].transcript;
+          console.log("Transcript:", transcript);
+
+          // Insert the transcript text into Quill editor
+          quill.insertText(quill.getLength(), transcript);
+        };
+
+        // Start speech recognition when the button is clicked
+        recognition.start();
+      }
+
+      // Attach the handleVoiceInput function to the voice input button click event
+      const voiceInputBtn = document.querySelector("#voiceInputBtn");
+      voiceInputBtn.addEventListener("click", handleVoiceInput);
+
+      // Function to toggle editor visibility
+      function toggleEditorVisibility() {
+        const editorDiv = document.querySelector(".form1");
+        editorDiv.style.display =
+          editorDiv.style.display === "none" ? "block" : "none";
+      }
+
+      // Attach the toggleEditorVisibility function to the editor control button click event
+      const editBtn = document.querySelector("#editBtn");
+      editBtn.addEventListener("click", toggleEditorVisibility);
+    </script>
+
+    <script>
+      // Function to handle voice input
+      function handleVoiceInput(targetId) {
+        const recognition =
+          new webkitSpeechRecognition() || new SpeechRecognition();
+        recognition.lang = "en-US";
+        recognition.start();
+
+        recognition.onresult = function (event) {
+          const speechResult = event.results[0][0].transcript;
+          document.getElementById(targetId).value = speechResult;
+        };
+
+        recognition.onerror = function (event) {
+          console.error("Speech recognition error:", event.error);
+        };
+      }
+
+      // Event listener for microphone icons
+      document.querySelectorAll(".microphone-icon").forEach((icon) => {
+        icon.addEventListener("click", function () {
+          const targetInputId = this.getAttribute("data-target");
+          handleVoiceInput(targetInputId);
+        });
+      });
+    </script>
+  </body>
+</html>
+{% endblock %}

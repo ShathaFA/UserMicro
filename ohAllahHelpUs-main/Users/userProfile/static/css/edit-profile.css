@@ -1,0 +1,295 @@
+.Explorebutton {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  margin-left: 160px;
+  background-color: transparent;
+  border: none;
+  color: #543786;
+  cursor: pointer;
+  font-size: 1.2rem;
+
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: relative; /* Add position relative to allow absolute positioning of the button */
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  z-index: 1; /* Ensure the logo appears above the button */
+}
+
+.profile-form button[type="submit"] {
+
+  display: block;
+  padding: 10px; 
+  width: 150px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  background-color: #543786;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+/* Apply styles to the body */
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrollbars */
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  color: #543786;
+  
+    position: fixed; /* Fix the header position */
+    top: 0; /* Align the header to the top of the viewport */
+    width: 100%; /* Make the header span the full width of the viewport */
+    z-index: 1000; /* Ensure the header appears above other content */
+  
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.mindscape-academy {
+  font-family: 'Imprima', sans-serif;
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-link {
+  margin-right: 20px;
+  color: #543786;
+  text-decoration: none;
+}
+
+/* Search bar styles */
+.search-bar {
+  width: 100%;
+  max-width: 494px;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 1px solid #000000;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 25px;
+  margin-right: 5px;
+}
+
+/* Button styles */
+
+
+
+
+
+.profile-button:hover {
+  text-decoration: none;
+}
+
+.profile-button:focus {
+  outline: none;
+}
+
+/* Main content styles */
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  max-width: 1026px;
+  margin: auto;
+}
+
+/* Profile section styles */
+.profile-left {
+  float: left;
+  width: 25%;
+  margin-right: 103px; /* Set margin to 103px from the left */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .profile-form div input,
+  .profile-form div textarea,
+  .password-input {
+    width: 100%;
+  }
+
+
+  
+  .search-bar {
+    max-width: none;
+  }
+}
+
+
+
+
+.profile-info h2 {
+  margin: 0 0 10px;
+}
+.profile-left {
+  float: left;
+  width: 30%;
+  margin-right: 50px;
+}
+
+.profile-picture-container {
+  width: 60%;
+  height: 0;
+  padding-bottom: 70%;
+  position: relative;
+  background-color: black;
+  margin-left: -95px; /* Adjusted margin to move the avatar to the left */
+  margin-top: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.profile-info {
+  margin-top: 40px;
+  margin-left: -60px;
+  
+ /* Adjusted margin to move the name and email to the left */
+
+}
+
+
+.profile-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+
+.profile-picture-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.profile-form {
+  flex-grow: 1;
+  width: calc(75% - 60px); /* Increase left margin to 40px */
+  margin-top: -300px;
+  margin-left: 60px; /* Add more left margin for extra space */
+}
+
+.profile-form form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 60px; /* Increase left padding to match the margin */
+}
+
+
+
+.profile-form div {
+  flex: 1;
+}
+
+.profile-form div label {
+  width: 394px;
+  display: block;
+}
+
+.profile-form div input,
+.profile-form div textarea {
+  width: 394px;
+  height: 94px;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-input {
+  width: 343px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.profile-form button {
+  width: 30%;
+  padding: 10px;
+  background-color: #543786;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-form textarea {
+  width: 825px;
+  height: 193px;
+}
+
+/* Additional styles for other elements... */

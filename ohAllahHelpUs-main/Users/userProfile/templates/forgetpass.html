@@ -1,0 +1,88 @@
+{% load static %}
+{% block content %}
+<title>Forget Password</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/forgetpass.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div class="container1">
+    <div class="left-container2">
+        <img src="{% static 'images/Forgotpassword-img2.png' %}" alt="Forget Password Image">
+    </div>
+    <div class="right-container2">
+        <div class="contentv">
+            <h1>Forgot Password?</h1>
+            <p>Please enter your email address to reset your password.</p>
+            <form id="resetForm" method="POST" action="{% url 'password-reset' %}">
+                {% csrf_token %}
+
+                <div class="input__group2">
+                    <input class="resetEm" type="email" id="email" required name="email"/>
+                    <label for="email" class="label-email">Email</label>
+                </div>
+                <button type="submit" id="resetButton">Reset Password</button>
+            </form>
+            <p class="back-to-login">Remember your password? <a href="{% url 'login_page' %}">Login here</a></p>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        </div>
+    </div>
+</div>
+
+<div class="forgetpopup" id="popup">
+    <div class="forgetpopup-content">
+        <span class="close-icon" id="close">&times;</span>
+        <p>We have sent an email to your email address 😉.<br><br> Please check your inbox 😊.</p>
+        <button id="okButton">OK</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById("resetForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        document.getElementById("popup").style.display = "flex";
+    });
+
+    document.getElementById("close").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "none";
+    });
+
+    document.getElementById("okButton").addEventListener("click", function () {
+        document.getElementById("popup").style.display = "none";
+    });
+
+    $(document).ready(function() {
+        $('#resetForm').on('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: {
+                    email: $('#resetForm input[type=email]').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(response) {
+                    // Handle success (e.g., display a success message)
+                    alert("If an account with that email was found, we've sent a password reset link.");
+                },
+                error: function(xhr, errmsg, err) {
+                    // Handle error (e.g., display an error message)
+                    console.log(xhr.status + ": " + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

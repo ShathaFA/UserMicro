@@ -1,0 +1,293 @@
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px; /* Added max-width for responsiveness */
+    width: 100%; /* Added width for responsiveness */
+    margin: auto; /* Center the container horizontally */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center child elements horizontally */
+    margin-top: 70px; /* Add margin to push the container down */
+}
+
+.title {
+    margin-top: 20px; /* Add margin to push title slightly lower */
+    margin-bottom: 20px; /* Add margin to separate title from other content */
+    text-align: center; /* Center the title text */
+}
+
+.search-bar {
+    margin-bottom: 20px; /* Add margin to separate search bar from other content */
+    display: flex; /* Use flexbox for positioning */
+    justify-content: flex-end; /* Align items to the right */
+    width: 100%; /* Make the search bar full width */
+}
+
+
+table {
+    width: 100%; /* Changed width to 100% for responsiveness */
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 20px; /* Increased padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #D4E0F0;
+    color: black;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+.action-icons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.action-icons a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+}
+
+/* Popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.popup-title {
+    font-weight: bold;
+    color: #DC2626;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.popup-message {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.popup-delete-button {
+    background-color: #DC2626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Search bar */
+
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 16px;
+    flex: 1; /* Added flex property to fill available space */
+    max-width: 300px; /* Added max-width to prevent input from stretching too much */
+}
+
+.search-bar button, .search-bar .add-button {
+    padding: 8px 16px;
+    background-color: #D4E0F0;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.search-bar .add-button {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+/* Hover effect */
+.add-button:hover {
+    background-color: #BDD5EA;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 600px) {
+    .search-bar input[type="text"] {
+        max-width: none; /* Remove max-width for smaller screens */
+        margin-right: 0; /* Remove right margin for smaller screens */
+    }
+
+    .search-bar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-end; /* Align items to the end */
+    }
+
+    .search-bar button, .search-bar .add-button {
+        margin-top: 8px; /* Add top margin for smaller screens */
+    }
+}
+
+
+
+ /* Style the modal - hidden by default */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+padding: auto;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgba(0, 0, 0, 0.4)/* Enable opacity */
+}
+
+/* Modal Content */
+.modal-content {
+margin: 15% auto; /* 15% from the top and centered */
+width: 40%; /* Could be wider or narrower */
+padding: 40px 50px 50px 50px;
+border: 3px solid #96b6ee;
+border-radius: 30px;
+background-color: #fff; /* White */
+position: relative; /* To position the close button */
+animation-name: zoom;
+animation-duration: 0.6s;
+}
+
+/* Add a zoom animation */
+@keyframes zoom {
+from {transform: scale(0, 0);} /* Start from 0 scale */
+to {transform: scale(1, 1);} /* Scale to 100% */
+}
+
+/* Style the close button */
+.close {
+color: black;
+position: absolute;
+top: 15px;
+right: 35px;
+font-size: 36px;
+font-weight: bold;
+}
+
+/* Style the create course button */
+.createUserBtn {
+background-color: #D6DFEF; /* Apply the specified color */
+color: black;
+font-size: 20px;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+width: 100%; /* Make it the same width as inputs */
+margin-top: 10px;/* Add space after form */
+}
+
+/* Style form elements */
+
+.label-userMang{
+color:#000000; /* Apply the specified color to labels */
+font-weight: 100;
+z-index: 100;
+float: left;
+height: 20px;
+line-height: 20px;
+position: relative;
+left: 15px;
+top: 9px;
+background-color: #ffffff;
+font-size: 18px;
+}
+.fname, .Lname, .email, .number, .file, .date{
+width: 100%;
+padding: 10px;
+border: 1.9px solid #D6DFEF;
+border-radius: 7px;
+box-sizing: border-box; 
+margin-bottom: 10px;
+line-height: 3ex;
+position: relative;
+}
+
+
+select {
+width: 100%;
+padding: 5px;
+padding-left: 10px;
+border: 2px solid #D6DFEF;
+border-radius: 7px;
+box-sizing: border-box; /* Include padding in width */
+margin-bottom: 10px;
+line-height: 5ex;
+-webkit-appearance: none;
+}
+
+select.minimal {
+background-image:
+linear-gradient(45deg, transparent 50%, #D6DFEF 50%),
+linear-gradient(135deg, #D6DFEF 50%, transparent 50%);
+background-position:
+calc(100% - 20px) calc(1em + 2px),
+calc(100% - 15px) calc(1em + 2px),
+calc(100% - 2.5em) 0.5em;
+background-size:
+5px 5px,
+5px 5px,
+1px 1.5em;
+background-repeat: no-repeat;
+}
+
+select.minimal:focus {
+background-image:
+linear-gradient(45deg, #D6DFEF 50%, transparent 50%),
+linear-gradient(135deg, transparent 50%, #D6DFEF 50%),
+linear-gradient(to right, #ccc, #ccc);
+background-position:
+calc(100% - 15px) 1em,
+calc(100% - 20px) 1em,
+calc(100% - 2.5em) 0.5em;
+background-size:
+5px 5px,
+5px 5px,
+1px 1.5em;
+background-repeat: no-repeat;
+border-color: 513886;
+outline: 0;
+}
+
+.title-create-account{
+color: #000000; /* Apply the specified color to h2 */
+font-size: 30px; /* Adjust font size */
+}
+::file-selector-button {
+display: none;
+}

@@ -1,0 +1,183 @@
+/* forgetpass.css */
+
+:root {
+    --primary-color: #543786;
+    --secondary-color: #FEB737;
+    --text-dark: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgba(84, 55, 134, 1);
+    margin: 0;
+    padding: 0;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.left-container2 {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-container2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.right-container2 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contentv {
+    background-color: rgb(231, 219, 253);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+.input__group2 {
+    position: relative;
+}
+
+.resetEm {
+    padding: 0.75rem 0;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #717775;
+    line-height: 13px;
+    height: 2.5rem;
+}
+
+.resetEm:focus {
+    border-color: #A7B5FC;
+}
+
+.label-email {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    transform: translateY(-110%);
+    font-size: 1rem;
+    color: #717775;
+    pointer-events: none;
+    transition: 0.3s;
+    padding-left: 2%;
+}
+
+.input__group2 input:focus~.label-email,
+.input__group2 input:valid~.label-email {
+    top: 0;
+    font-size: 0.8rem;
+}
+
+.button-container {
+    position: relative;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button#okButton {
+    background-color: #543786;
+}
+
+.back-to-login {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.back-to-login a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.back-to-login a:hover {
+    text-decoration: underline;
+}
+
+/* Pop-up Styles */
+.forgetpopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.forgetpopup-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+.forgetpopup-content p {
+    padding-top: 16px;
+}
+
+.close-icon {
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    font-size: 28px;
+    color: #FEB737;
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    color: #8a5c07;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 768px) {
+    .container1 {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-container2,
+    .right-container2 {
+        flex: 1;
+        width: 100%;
+    }
+
+    .contentv {
+        margin: 20px;
+    }
+}

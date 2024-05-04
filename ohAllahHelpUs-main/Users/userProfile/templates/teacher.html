@@ -1,0 +1,316 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Educator Profile</title>
+  <!-- custom css -->
+  <link rel="stylesheet" href="{% static 'css/teacher.css' %}" />
+  <!-- font-awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+</head>
+
+<body>
+  <div class="header__wrapper">
+    <div class="cols__container">
+      <div class="left__col">
+        <div class="img__container">
+          <img
+            id="user-profile-picture"
+            src="{% static 'images/profile-img.png' %}"
+            alt=""
+          />
+          <h2 class="name-profile">Eyad Salem</h2>
+          <p class="ID-profile">4010365</p> 
+          <p class="ProfeTitle-profile">Software Engineer</p>
+          <p class="company-profile">Work at AWS Acadimy Company</p>
+          <div class="content">
+            <hr />
+            <p class="areaOfSpec">
+              Software engineer extraordinaire, skilled in full-stack
+              development and passionate about crafting innovative solutions to
+              complex problems.
+            </p>
+            <div class="pro-links">
+              <a href="#"
+                ><i class="fa-brands fa-linkedin" style="color: #543786"></i
+              ></a>
+            </div>
+          </div>
+          <a href="{% url 'editTchProfile' %}">
+            <button class="btn-theme">Edit Profile</button></a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="right__col">
+      <nav>
+        <ul class="menu">
+          <li><a href="#MyPublishedCourses">My Published Courses</a></li>
+          <li><a href="#MyArchive">My Archive</a></li>
+        </ul>
+      </nav>
+
+      <div class="analysis-section">
+        <!-- Information A1.1 and A1.2 -->
+        <div class="analysis-info">
+          <div class="info-box">
+            <h3>Number of enrolled students in all courses:</h3>
+            <span id="total-courses">0</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="buttons-create-course-div">
+        <!------------- add new course------------------- -->
+        <button class="btn-theme-createcourse" id="createCourseBtn">
+          Create New Course
+        </button>
+
+        <!------------- Generaye new course------------------- -->
+        <button class="btn-theme-createcourse" id="generateCourseBtn">
+          Generate New Course Using AI
+        </button>
+      </div>
+      </div>
+      <!-- -------------------------------pop-up create course---------------------------- -->
+      <div id="createCourseModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 class="title-create-coures">Create Course</h2>
+          <form
+            id="createCourseForm"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+
+            <label class="label-Course" for="courseTitle"
+              >Course Title:
+              <i
+                class="fa-solid fa-microphone-lines microphone-icon"
+                data-target="courseTitle"
+              ></i
+            ></label>
+            <div class="input-with-microphone">
+              <input
+                class="Ctext"
+                type="text"
+                id="courseTitle"
+                name="courseTitle"
+                placeholder="Enter course title.."
+              />
+            </div>
+
+            <label class="label-Course" for="courseCategory"
+              >Course Category:
+              <i
+                class="fa-solid fa-microphone-lines microphone-icon"
+                data-target="courseCategory"
+              ></i
+            ></label>
+            <div class="input-with-microphone">
+              <input
+                class="Ctext"
+                type="text" 
+                id="courseCategory"
+                name="courseCategory"
+                placeholder="Enter course category.."
+              />
+            </div>
+
+            <label class="label-Course" for="courseDescription"
+              >Course Description:
+              <i
+                class="fa-solid fa-microphone-lines microphone-icon"
+                data-target="courseDescription"
+              ></i
+            ></label>
+            <div class="input-with-microphone">
+              <textarea
+                id="courseDescription"
+                name="courseDescription"
+                placeholder="Write a course description.."
+              ></textarea>
+            </div>
+
+            <label class="label-Course" for="difficultyLevel"
+              >Difficulty Level:
+              <i
+                class="fa-solid fa-microphone-lines microphone-icon"
+                data-target="difficultyLevel"
+              ></i
+            ></label>
+            <div class="input-with-microphone">
+              <input
+                class="Ctext"
+                type="text"
+                id="difficultyLevel"
+                name="difficultyLevel"
+                placeholder="Enter course difficulty Level.."
+              />
+            </div>
+
+            <label class="label-Course" for="duration">Duration:</label>
+            <input
+              class="Ctext"
+              type="text"
+              id="duration"
+              name="duration"
+              placeholder="Enter course duration.."
+            />
+
+            <br />
+            <label class="label-Course" for="courseImage">Picture:</label>
+            <input
+              class="Ctext"
+              type="file"
+              id="courseImage"
+              name="coursePic"
+              accept="image/*"
+            />
+            <br />
+            <button type="submit" class="createCourseBtn">Create</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- -------------------------------pop-up generate course---------------------------- -->
+      <div id="generateCourseModal" class="modal" >
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 class="title-generate-coures">Generate Course Using AI</h2>
+          <div id="loadingIndicator" class="loader" style="display: none; border-color: #543787 transparent transparent transparent;"></div>
+
+          <form
+            id="generateCourseForm"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+
+            <label class="label-Course" for="gcourseTitle"
+              >Course Title:
+              <i
+                class="fa-solid fa-microphone-lines microphone-icon"
+                data-target="courseTitle"
+              ></i
+            ></label>
+            <div class="input-with-microphone">
+              <input
+                class="Ctext"
+                type="text"
+                id="gcourseTitle"
+                name="courseTitle"
+                placeholder="Enter course title.."
+              />
+            </div>
+
+            <label class="label-Course" for="gcourseCategory"
+              >Course Category:
+              <i
+                class="fa-solid fa-microphone-lines microphone-icon"
+                data-target="courseCategory"
+              ></i
+            ></label>
+            <div class="input-with-microphone">
+              <input
+                class="Ctext"
+                type="text"
+                id="gcourseCategory"
+                name="courseCategory"
+                placeholder="Enter course category.."
+              />
+            </div>
+
+
+            <label class="label-Course" for="difficultyLevel"
+              >Difficulty Level:
+              <i
+                class="fa-solid fa-microphone-lines microphone-icon"
+                data-target="difficultyLevel"
+              ></i
+            ></label>
+            <div class="input-with-microphone">
+              <input
+                class="Ctext"
+                type="text"
+                id="gdifficultyLevel"
+                name="difficultyLevel"
+                placeholder="Enter course difficulty Level.."
+              />
+            </div>
+
+
+            <br />
+            <br />
+            <button type="submit" class="generateCourseBtn">Generate</button>
+          
+          </form>
+        </div>
+      </div>
+
+      <script>
+        // Function to handle voice input
+        function handleVoiceInput(targetId) {
+          const recognition =
+            new webkitSpeechRecognition() || new SpeechRecognition();
+          recognition.lang = "en-US";
+          recognition.start();
+
+          recognition.onresult = function (event) {
+            const speechResult = event.results[0][0].transcript;
+            document.getElementById(targetId).value = speechResult;
+          };
+
+          recognition.onerror = function (event) {
+            console.error("Speech recognition error:", event.error);
+          };
+        }
+
+        // Event listener for microphone icons
+        document.querySelectorAll(".microphone-icon").forEach((icon) => {
+          icon.addEventListener("click", function () {
+            const targetInputId = this.getAttribute("data-target");
+            handleVoiceInput(targetInputId);
+          });
+        });
+      </script>
+
+      <!-- ---------section start here------------------- -->
+      <div class="sections">
+        <div id="MyPublishedCourses" class="section">
+          <div class="course-section"></div>
+        </div>
+
+        <div id="MyArchive" class="section">
+          <div class="course-section"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Popup -->
+  <div id="confirm-popup" class="popup">
+    <div class="popup-content">
+      <p>Are you sure you want to delete the course?</p>
+      <div class="button-group">
+        <button onclick="deleteCourse()">Yes</button>
+        <button onclick="closePopup()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STATIC_URL = "{% static '' %}";
+  </script>
+
+  <script src="{% static 'js/tchProfile.js' %}"></script>
+  <script src="{% static 'js/generateCourse.js' %}"></script>
+
+</body>
+{% endblock %}

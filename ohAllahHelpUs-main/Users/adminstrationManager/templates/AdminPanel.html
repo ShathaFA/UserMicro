@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{% static 'css/AdminPanel.css' %}" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="dwon-panel">
+      <h2 class="title">Admin Panel</h2>
+      <ul>
+        <li>
+            <h2>Total Users</h2>
+            <div>
+              <p>443</p>
+              <button id="goToMngUsrs">Manage Users</button>
+            </div>
+          </li>
+        <li>
+          <h2>Educator Requests</h2>
+          <div>
+            <p>1</p>
+            <button id="goToEduReq" >Review Requests</button>
+          </div>
+        </li>
+        <li>
+          <h2>AI Content Requests</h2>
+          <div>
+            <p>23</p>
+            <button id="goToAIReq">Review Requests</button>
+          </div>
+        </li>
+        
+      </ul>
+    </div>
+    <br /><br />
+  </body>
+  <script>
+    document.getElementById('goToEduReq').addEventListener('click', function() {
+      window.location.href = "{% url 'EduRequest' %}";
+    });
+
+    document.getElementById('goToAIReq').addEventListener('click', function() {
+      window.location.href = "{% url 'AIrequest' %}";
+    });
+
+    document.getElementById('goToMngUsrs').addEventListener('click', function() {
+      window.location.href = "{% url 'userMang' %}";
+    });
+    </script>
+</html>
+{% endblock %}

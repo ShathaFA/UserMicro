@@ -1,0 +1,207 @@
+body{
+    background-color:white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--black-70);
+    min-height: 100vh;
+    overflow-x:hidden;
+    padding-left: 190px;
+    padding-right: 180px;
+}
+
+a{
+    color: black;
+    text-decoration:none;
+}
+
+a:hover{
+    color: rgba(84, 55, 134, 1); 
+}
+img{
+    max-width: 100%;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+/* spaces btween lins */
+h1,h2,h3,h4,h5,h6{
+    color: black;
+    line-height: 1.1;
+}
+
+h3{
+   font-size: 20px; 
+}
+::selection{
+    color: rgba(84, 55, 134, 1);
+    background-color: var(--main-color);
+}
+
+/* header start*/
+.header{
+  border-bottom: 1px solid ver(--border-color-2);  
+}
+.header-logo a{
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color:black;
+}
+.header-logo span{
+  color:rgba(255, 205, 78, 1);  
+}
+.header .menu-item{
+   display: inline-block;
+   margin-left: 40px; 
+}
+.header .menu-item > a{
+    display: block;
+    padding: 24px 0;
+    font-weight: 400;
+    text-decoration:underline;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+
+}
+.header-backdrop,
+.header-close-btn,
+.header-hamburger-btn{
+    display: none;
+}
+/* header end*/
+
+/* customized bootstrap classes */
+.cotainer{
+    --bs-gutter-x:15px;
+    max-width: 1140px;
+}
+
+/* circular img */
+.circular-img{
+    max-width: 500px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+/* .circular-img-inner{
+    text-align: center;
+    border-radius: 0 0 180px 180px;
+    overflow: hidden;
+} */
+/* .circular-img-circle{
+    height: 360px;
+    width: 360px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 50%;
+
+} */
+.circular-img img{
+    position: relative;
+}
+/* banner section */
+.banner-section{
+    padding: 80px 0;
+    min-height: 68px;
+}
+.banner-text h2{
+    font-size: 20px;
+    font-weight: 600;
+    color:rgba(255, 205, 78, 1) ;
+}
+.banner-text h1{
+    font-size: 50px;
+    font-weight: 700;
+    color:rgba(84, 55, 134, 1);
+}
+.banner-section .circular-img-circle{
+    background-color:rgba(255, 205, 78, 1) ;
+}
+/* button */
+.btn-theme{
+    background-color: rgba(84, 55, 134, 1);
+    color: white;
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+.btn-theme:hover{
+    color: rgba(84, 55, 134, 1);
+    background-color: rgba(255, 205, 78, 1);
+}
+/* courses */
+.section-padding{
+    padding: 60px 0;
+}
+.section-title{
+    margin-bottom: 40px;
+}
+.section-title .title{
+    font-size: 40px;
+    font-weight: 600;
+    color: rgba(84, 55, 134, 1);
+    text-transform: capitalize;
+}
+.section-title .sub-title{
+    font-size: 35px;
+    font-weight: 400;
+    color: black;
+}
+/* courses item */
+.courses-item{
+    margin-bottom: 30px;
+    position: relative;
+}
+.courses-item .img-box img{
+    width: 200px;
+    border-radius:5px;
+}
+
+.courses-item .link{
+    color: black;
+    display: inline-block;
+}
+.courses-item .title{
+   text-transform: capitalize; 
+   margin: 15px 0;
+   transition: color 0.3s ease;
+}
+
+.courses-item:hover .title{
+    color: black;
+}
+.courses-item .instructor{
+    text-transform: capitalize;
+    margin: 0 0 12px;
+}
+.courses-item .instructor img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 8px;
+    
+}
+.courses-item .rating{
+    font-size: 14px;
+}
+.courses-item .average-rating{
+    font-size: 600;
+    color: black;
+}
+.courses-item .average-stars i{
+    color: rgb(94, 69, 138);
+}
+
+
+.courses-item-inner{
+   
+    border-radius: 5%;
+    box-shadow: 0px 2px 5px 0px   rgb(68, 55, 90);
+}

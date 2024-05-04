@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Requests</title>
+    <link rel="stylesheet" href="{% static 'css/AIRequest.css' %}" />
+    <!-- for icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'AdminPanel' %}"><button class="go-back-AdminPanel">
+            Admin Panel
+          </button></a>
+        <h1 class="title">AI Generated Content Requests</h1>
+        
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Content Title</th>
+                    <th>Request Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- You would fetch data from the database and generate rows dynamically -->
+                <tr>
+                    <td>John Doe</td>
+                    <td>2024-03-16</td>
+                    <td class="action-icons">
+                        <button class="action-button accept" aria-label="Accept">
+                            <i class="fas fa-check"></i> <!-- Font Awesome check icon -->
+                        </button>
+                        <button class="action-button deny" aria-label="Deny">
+                            <i class="fas fa-times"></i> <!-- Font Awesome times icon -->
+                        </button>
+                        <button class="action-button view" aria-label="View">
+                            <i class="fas fa-eye"></i> <!-- Font Awesome eye icon -->
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>2024-03-15</td>
+                    <td class="action-icons">
+                        <button class="action-button accept" aria-label="Accept">
+                            <i class="fas fa-check"></i> <!-- Font Awesome check icon -->
+                        </button>
+                        <button class="action-button deny" aria-label="Deny">
+                            <i class="fas fa-times"></i> <!-- Font Awesome times icon -->
+                        </button>
+                        <button class="action-button view" aria-label="View">
+                            <i class="fas fa-eye"></i> <!-- Font Awesome eye icon -->
+                        </button>
+                    </td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Popup for rejection reason -->
+    <div id="popup" class="popup">
+        <div class="popup-title">Add the rejection reason</div>
+        <div class="popup-box">
+            <span class="write-here-text">Write here</span>
+            <textarea class="popup-input" rows="4"></textarea>
+            <button class="popup-submit" onclick="closePopup()">Done</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Get the deny action icons
+        const denyIcons = document.querySelectorAll('.deny');
+
+        // Get the popup element
+        const popup = document.getElementById('popup');
+
+        // Attach click event listener to each deny icon
+        denyIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                // Display the popup when the icon is clicked
+                popup.style.display = 'block';
+            });
+        });
+
+        // Close the popup when clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+
+        // Prevent the popup from closing when clicking inside it
+        popup.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    </script>
+</body>
+</html>

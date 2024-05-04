@@ -1,0 +1,106 @@
+
+#quiz-container {
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    padding: 30px;
+    max-width: 100%;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #543787;
+    font-size: 45px;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+p{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.question-container {
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin: 0 auto; 
+}
+
+.question {
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f2f6fa;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #e2eaf1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.option input {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    accent-color: #543787;
+}
+
+.option label {
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit {
+    display: block;
+    width: 100%; /* By default, take up full width */
+    max-width: 200px; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the button and add some spacing */
+    padding: 14px;
+    background-color: #543787;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #FEB737;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 480px) {
+    #quiz-container {
+        padding: 20px; /* Reduce padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 24px; /* Reduce font size for smaller screens */
+    }
+
+    button {
+        padding: 10px; /* Adjust button padding for smaller screens */
+        font-size: 14px; /* Reduce button font size for smaller screens */
+    }
+}

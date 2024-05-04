@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link rel="icon" type="image/png" href="{% static 'images/t2.png' %}">
+
+<!-- custom link -->
+<link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
+<!-- boxicons link -->
+<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+<!-- font links -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+<!-- font aw icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<!-- start home-into section -->
+<section class="home" id="home">
+    <div class="home-text">
+        <h6 class="intro-home">He who visits Mindscape Academy most, learns best.</h6>
+        <h1>Best Online Platform <br> For E-Learning</h1>
+        <p>Mindscape Academy seamlessly merges conventional teaching methods with cutting-edge AI technology, offering a
+            dynamic learning environment enhanced by sophisticated multimodal interaction capabilities.</p>
+        <button class="btn-theme" id="get">Get started!</button>
+    </div>
+    <div class="home-img">
+        <img src="{% static 'images/forh1.png' %}" alt="home-into-img">
+    </div>
+
+</section>
+<!-- end home-into section -->
+
+<!-- start about section -->
+<setion class="about" id="about">
+    <div class="about-img">
+        <img src="{% static 'images/h2.jpg' %}" alt="about-img">
+        <!-- <video controls autoplay>
+                <source src="Online Education in 2021_ _ by Studyportals.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> -->
+    </div>
+    <div class="about-text">
+        <h2>Who We Are?</h2>
+        <p>Mindscape Academy seamlessly merges conventional teaching methods with cutting-edge AI technology, offering a
+            dynamic learning environment enhanced by sophisticated multimodal interaction capabilities. <br> </p>
+    </div>
+</setion>
+
+<!-- Freatures 1 section start -->
+<section class="features1 section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 ">
+                <div class="section-title">
+                    <h2>Awesome <span>Features</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="owl-carousel features-carousel">
+
+                <div class="feature-item">
+                    <div class="icon"><i class="fa-solid fa-lines-leaning"></i></div>
+                    <h3>Traditional</h3>
+                    <p>These features aim to provide a solid foundation for structured content delivery. <br>✨</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>AI-Based</h3>
+                    <p>The website uses AI to improve content, quizzes, and personalize learning. <br>✨</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="icon"><i class="fa-solid fa-microphone-lines"></i></div>
+                    <h3>Multi-Modal Interaction</h3>
+                    <p>These features cater to diverse learning styles, making the experience more dynamic and engaging.
+                        <br>✨</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- top 3 courses section start -->
+<section class="course">
+    <h2>Top <span>3</span> Courses</h2>
+    <p>Mindscape Academy offers a diverse range of courses tailored to expand your mind and skills. Here are the top
+        three courses</p>
+    <div class="course-section">
+        <!-- Course 1 -->
+        <div class="course-info" onclick="window.location.href='edit-profile.html'">
+            <!-- Course content -->
+            <img class="course-image" src="{% static 'images/img1.jpeg' %}" alt="Course 1" />
+            <div class="course-title">ALRHAZ</div>
+            <div class="course-details">
+                <div class="category prog">science</div>
+                <div class="hours"><span class="emoji">&#9200;</span> 20 hours</div>
+                <div class="students"><span class="emoji">&#128100;</span> 500</div>
+
+                <div class="lessons"><span class="emoji">&#128214;</span> 10</div>
+                <div class="instructor"><span class="emoji">&#128188;</span> John Doe</div>
+                <div class="reviews">
+                    ⭐⭐⭐⭐⭐ <!-- Unicode stars for ratings -->
+                    <p>1K</p> <!-- Number of reviews -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="course-info" onclick="window.location.href='edit-profile.html'">
+            <img class="course-image" src="{% static 'images/img2.jpeg' %}" alt="Course 2" />
+            <div class="course-title">PRAKTIKA</div>
+            <div class="course-details">
+                <div class="category science">science</div>
+                <div class="hours"><span class="emoji">&#9200;</span> 20 hours</div>
+                <div class="students"><span class="emoji">&#128100;</span> 500</div>
+                <div class="lessons"><span class="emoji">&#128214;</span> 10</div>
+                <div class="instructor"><span class="emoji">&#128188;</span> John Doe</div>
+                <!-- Inside the course-details div -->
+                <div class="reviews">
+                    ⭐⭐⭐⭐⭐ <!-- Unicode stars for ratings -->
+                    <p>1K</p> <!-- Number of reviews -->
+                </div>
+            </div>
+        </div>
+        <div class="course-info" onclick="window.location.href='edit-profile.html'">
+            <img class="course-image" src="{% static 'images/img3.jpeg' %}" alt="Course 2" />
+            <div class="course-title">PRAKTIKA</div>
+            <div class="course-details">
+                <div class="category history">History</div>
+                <div class="hours"><span class="emoji">&#9200;</span> 20 hours</div>
+                <div class="students"><span class="emoji">&#128100;</span> 500</div>
+                <div class="lessons"><span class="emoji">&#128214;</span> 10</div>
+                <div class="instructor"><span class="emoji">&#128188;</span> John Doe</div>
+                <!-- Inside the course-details div -->
+                <div class="reviews">
+                    ⭐⭐⭐⭐⭐ <!-- Unicode stars for ratings -->
+                    <p>1K</p> <!-- Number of reviews -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Add more courses as needed... -->
+
+
+    </div>
+</section>
+<!-- top 3 courses section end -->
+
+<!-- start Project founders section -->
+<section class="funders">
+    <h1 class="fiun-title">Our Founders</h1>
+    <p>The website was developed by four female software engineers who dubbed themselves the <samp>Gang of
+            Four</samp>🎓✨</p>
+    <div class="expert-box">
+
+        <div class="profile">
+            <h2 class="foun-name">Reem</h2>
+            <h5 class="foun-major">Software Engineer</h5>
+            <p class="foun-job">Full-Stack Developer</p>
+            <div class="pro-links">
+                <a href="https://www.linkedin.com/in/reem-bayazid-7abab0226/"><i class="fa-brands fa-linkedin"
+                        style="color: #543786;"></i></a>
+            </div>
+        </div>
+
+        <div class="profile">
+            <h2 class="foun-name">Abeer</h2>
+            <h5 class="foun-major">Software Engineer</h5>
+            <p class="foun-job">UI/UX designer | Front-end Developer</p>
+            <div class="pro-links">
+                <a href="https://www.linkedin.com/in/abeer-osman-717828268/"><i class="fa-brands fa-linkedin"
+                        style="color: #543786;"></i></a>
+            </div>
+        </div>
+
+        <div class="profile">
+            <h2 class="foun-name">Shatha</h2>
+            <h5 class="foun-major">Software Engineer</h5>
+            <p class="foun-job">UI/UX designer | Front-end Developer</p>
+            <div class="pro-links">
+                <a href="https://www.linkedin.com/in/shatha-faraj-363bb4191/"><i class="fa-brands fa-linkedin"
+                        style="color: #543786;"></i></a>
+            </div>
+        </div>
+
+        <div class="profile">
+            <h2 class="foun-name">Fatimah</h2>
+            <h5 class="foun-major">Software Engineer</h5>
+            <p class="foun-job">Front-end Developer</p>
+            <div class="pro-links">
+                <a href="https://www.linkedin.com/in/fatima-jalmoud-48484319b/"><i class="fa-brands fa-linkedin"
+                        style="color: #543786;"></i></a>
+            </div>
+        </div>
+
+    </div>
+    
+</section>
+<script>
+        document.getElementById("get").addEventListener("click", function () {
+    window.location.href = '{% url "signup_page" %}';
+  });
+</script>
+{% endblock %}

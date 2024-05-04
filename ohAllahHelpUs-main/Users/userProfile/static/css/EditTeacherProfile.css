@@ -1,0 +1,167 @@
+/* General styles */
+
+/* Container for form */
+.container {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10%; /* Padding for responsiveness */
+  max-width: 1200px; /* Limit the maximum width of the container */
+  margin-top: 20px;
+
+}
+
+/* Profile picture section */
+.profile-picture {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.profile-picture img {
+  max-width: 100%; 
+  height: 250px; 
+  width: 250px; 
+  margin-bottom: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #e6e9ee; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.edit-icon {
+  margin-top: -60px;
+  margin-bottom: 50px;
+  width: 50px; /* Define the width */
+  height: 50px; /* Define the height */
+  background-color: #fff;
+  border: 1px solid #7d7e7e;
+  border-radius: 50%; /* Circular shape */
+  padding-bottom: 2px;
+  padding-top: 12px;
+  padding-left: 18px;
+  padding-right: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 10; /* Bring icon to front if needed */
+}
+
+.edit-icon:hover {
+  background-color: #f0e7fe; /* Softer hover color */
+  transform: scale(1.05);
+}
+
+/* Form section */
+.form {
+  flex: 2; /* Takes up 2/3 of the container width */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Softer shadow */
+  padding: 40px;
+}
+
+/* Form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  position: absolute;
+  top: -13px; /* Adjusts the position above the input */
+  left: 15px; /* Adjusts the position to the left of the input */
+  background-color: #fff;
+  padding: 0 5px; /* Padding around the label text */
+  font-weight: 500;
+  color: #555;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%; /* Full width */
+  transition: border-color 0.3s ease;
+  background-color: #ffffff; /* Slight background color */
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #7180d0;
+}
+
+.form-group input:focus + label {
+  color: #7180d0;
+}
+
+.password-container {
+  position: relative;
+  display: flex; /* For proper alignment */
+}
+
+.show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.show-password i {
+  color: #777;
+}
+
+.btn-theme {
+  padding: 15px 30px;
+  margin: 0 auto; /* Center the button horizontally */
+  display: block; /* Ensure it takes up full width */
+  border: 2px solid #543787;
+  border-radius: 30px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  text-transform: capitalize;
+  transition: all 0.5s ease;
+}
+
+.btn-theme:hover {
+  background-color: #543787;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 5%; /* Adjusted padding for responsiveness */
+  }
+
+  .profile-picture {
+    margin-right: 0; /* Remove margin for smaller screens */
+    margin-bottom: 20px; /* Add some margin below */
+  }
+
+  .profile-picture img {
+    width: 100%; 
+    height: 200px;
+    max-width: 200px; 
+  }
+
+  .edit-icon {
+    margin-top: -40px; /* Adjust top margin */
+    margin-bottom: 30px; /* Adjust bottom margin */
+    width: 40px; /* Adjusted width for smaller screens */
+    height: 40px; /* Adjusted height for smaller screens */
+    padding-left: 15px; /* Adjusted padding for smaller screens */
+    padding-right: 3px; /* Adjusted padding for smaller screens */
+  }
+}

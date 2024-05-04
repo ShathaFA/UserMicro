@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Student Profile</title>
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'css/student.css' %}" />
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/stdProfile.js' %}"></script>
+
+</head>
+
+<body>
+    <div class="header__wrapper">
+        <div class="cols__container">
+            <div class="left__col">
+                <div class="img__container">
+                    <img id="user-profile-picture" src="{% static 'images/profile-img.png' %}" alt="Here goes the profile pic">
+                    <h2 class="name-profile">Here goes the full name</h2>
+                    <p class="ID-profile">Here goes the std ID</p>
+                    <div class="content">
+                        <hr>
+                        <p class="areasOfInterest">Here goes the area of interests</p>
+                    </div>
+
+                    <button id="goToEditProfile" class="btn-theme">Edit Profile</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="right__col">
+            <nav>
+                <ul class="menu">
+                    <li><a href="#myCourses">My Course</a></li>
+                    <li><a href="#MyFavoriteCourses">My Favorite Courses</a></li>
+                    <li><a href="#MyAuto-generatedCourses">My Auto-generated Courses</a></li>
+                </ul>
+            </nav>
+
+            <div class="analysis-section">
+                <!-- Information A1.1 and A1.2 -->
+                <div class="analysis-info">
+                    <div class="info-box">
+                        <h3>Total Number of Courses Completed:</h3>
+                        <span id="total-courses">0</span>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Number of Courses Completed Per Month:</h3>
+                        <span id="courses-per-month">0</span>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Percentage of Completed Courses:</h3>
+                        <span id="completed-percentage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-section" id="course-section">
+
+            </div>
+            <!-- ---------section start here------------------- -->
+            <div class="sections">
+                <div id="myCourses" class="section">
+                    <div class="course-section">
+                    </div>
+                </div>
+                <div id="MyFavoriteCourses" class="section">
+                    <div class="course-section">
+                        <!-- Course 1 -->
+                        <div class="course-info" onclick="window.location.href='edit-profile.html'">
+                            <img class="course-image" src="{% static 'images/rectangle-16-3qf.png' %}" alt="Course 2" />
+                            <div class="course-title">PRAKTIKA</div>
+                            <div class="course-details">
+                                <div class="category-type">History</div>
+                                <div class="hours"><span class="emoji">&#9200;</span> 20 hours</div>
+                                <div class="students"><span class="emoji">&#128100;</span> 500</div>
+                                <div class="lessons"><span class="emoji">&#128214;</span> 10</div>
+                                <div class="instructor"><span class="emoji">&#128188;</span> John Doe</div>
+                                <!-- Inside the course-details div -->
+                                <div class="reviews">
+                                    ⭐⭐⭐⭐⭐ <!-- Unicode stars for ratings -->
+                                    <p>1K</p> <!-- Number of reviews -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="course-info" onclick="window.location.href='edit-profile.html'">
+                            <img class="course-image" src="{% static 'images/rectangle-16-hiD.png' %}" alt="Course 2" />
+                            <div class="course-title">PRAKTIKA</div>
+                            <div class="course-details">
+                                <div class="category-type">History</div>
+                                <div class="hours"><span class="emoji">&#9200;</span> 20 hours</div>
+                                <div class="students"><span class="emoji">&#128100;</span> 500</div>
+                                <div class="lessons"><span class="emoji">&#128214;</span> 10</div>
+                                <div class="instructor"><span class="emoji">&#128188;</span> John Doe</div>
+                                <!-- Inside the course-details div -->
+                                <div class="reviews">
+                                    ⭐⭐⭐⭐⭐ <!-- Unicode stars for ratings -->
+                                    <p>1K</p> <!-- Number of reviews -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more courses as needed... -->
+                    </div>
+                </div>
+                <div id="MyAuto-generatedCourses" class="section">
+                    <div class="course-section">
+                        <div class="course-info" onclick="window.location.href='edit-profile.html'">
+                            <img class="course-image" src="{% static 'images/rectangle-14.png' %}"" alt=" Course 2" />
+                            <div class="course-title">PRAKTIKA</div>
+                            <div class="course-details">
+                                <div class="category-type">History</div>
+                                <div class="hours"><span class="emoji">&#9200;</span> 20 hours</div>
+                                <div class="students"><span class="emoji">&#128100;</span> 500</div>
+                                <div class="lessons"><span class="emoji">&#128214;</span> 10</div>
+                                <div class="instructor"><span class="emoji">&#128188;</span> John Doe</div>
+                                <!-- Inside the course-details div -->
+                                <div class="reviews">
+                                    ⭐⭐⭐⭐⭐ <!-- Unicode stars for ratings -->
+                                    <p>1K</p> <!-- Number of reviews -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    document.getElementById('goToEditProfile').addEventListener('click', function() {
+      window.location.href = "{% url 'editProfile' %}";
+    });
+</script>
+{% endblock %}

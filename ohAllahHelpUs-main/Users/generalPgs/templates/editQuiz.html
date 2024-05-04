@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- custom link -->
+    <link rel="stylesheet" href="{% static 'css/viewQuiz.css' %}">
+    <title>View Mode</title>
+</head>
+
+<body>
+    <div id="quiz-container" aria-labelledby="quiz-heading">
+        <h1 id="quiz-heading">Edit Quiz</h1>
+
+        <form id="edit-quiz-form">
+            <div class="question-container">
+                <label for="question1" class="question">Question 1:</label>
+                <input type="text" id="question1" value="What is the capital of France?">
+
+                <div class="option">
+                    <input type="radio" name="correct-choice-1" id="correct-choice-1a" value="A">
+                    <label for="correct-choice-1a">A. </label>
+                    <input type="text" id="question1a" value="Paris">
+                </div>
+                <div class="option">
+                    <input type="radio" name="correct-choice-1" id="correct-choice-1b" value="B">
+                    <label for="correct-choice-1b">B. </label>
+                    <input type="text" id="question1b" value="Berlin">
+                </div>
+                <div class="option">
+                    <input type="radio" name="correct-choice-1" id="correct-choice-1c" value="C">
+                    <label for="correct-choice-1c">C. </label>
+                    <input type="text" id="question1c" value="Madrid">
+                </div>
+                <div class="option">
+                    <input type="radio" name="correct-choice-1" id="correct-choice-1d" value="D">
+                    <label for="correct-choice-1d">D. </label>
+                    <input type="text" id="question1d" value="Rome">
+                </div>
+            </div>
+
+            <div class="question-container">
+                <label for="question2" class="question">Question 2:</label>
+                <input type="text" id="question2" value="What is 2 + 2?">
+
+                <div class="option">
+                    <input type="radio" name="correct-choice-2" id="correct-choice-2a" value="A">
+                    <label for="correct-choice-2a">A. </label>
+                    <input type="text" id="question2a" value="3">
+                </div>
+                <div class="option">
+                    <input type="radio" name="correct-choice-2" id="correct-choice-2b" value="B">
+                    <label for="correct-choice-2b">B. </label>
+                    <input type="text" id="question2b" value="4">
+                </div>
+                <div class="option">
+                    <input type="radio" name="correct-choice-2" id="correct-choice-2c" value="C">
+                    <label for="correct-choice-2c">C. </label>
+                    <input type="text" id="question2c" value="5">
+                </div>
+                <div class="option">
+                    <input type="radio" name="correct-choice-2" id="correct-choice-2d" value="D">
+                    <label for="correct-choice-2d">D. </label>
+                    <input type="text" id="question2d" value="6">
+                </div>
+            </div>
+
+            <!-- Add more questions as needed -->
+
+            <button class="submit" type="button" id="update-quiz" onclick="document.location='viewQuiz'">Update Quiz</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}

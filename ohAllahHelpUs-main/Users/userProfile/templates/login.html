@@ -1,0 +1,83 @@
+{% block content %}
+{% load static %}
+<title>Login page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+
+
+<div class="container">
+  <div class="container__left">
+    <h1>WELCOME BACK !</h1>
+    <blockquote></blockquote>
+    <img class="login-im" src="{% static 'images/login-img.png' %}" alt="this is the login page"
+      style="width: 100%; max-width: 500px; margin-top: 5px; margin-bottom: 0;" />
+  </div>
+  <div class="container__right">
+    <div class="content">
+      <img class="logo-remove" src="{% static 'images/logo-remove.png' %}" alt="logo" />
+      <p class="header">Login Form</p>
+      <form method="POST" action="{% url 'login_page' %}">
+        {% csrf_token %}
+        <div class="inputlogin_field">
+          <input name="email" type="email" required />
+          <label for="email"> Email</label>
+        </div>
+        <div class="inputlogin_field">
+          <input name="password" type="password" id="passwordInput" required />
+          <label for="password">Password</label>
+          <i id="togglePasswordIcon" class="fas fa-eye-slash" onclick="togglePasswordVisibility()"></i>
+        </div>
+        <div class="remembercheck">
+          <div class="remember-me">
+            <input type="checkbox" id="rememberMeCheckbox">
+            <label for="rememberMeCheckbox">Remember me</label>
+          </div>
+          <div class="spacer"></div>
+          <p class="forgot-password"><a href="{% url 'forgetPass' %}">Forgot password?</a></p>
+        </div>
+        <button>Sign In</button>
+      </form>
+
+      <p class="create__account">
+        Don't have an account? <a href="{% url 'signup_page' %}">Sign up</a>
+      </p>
+
+      
+      {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    </div>
+  </div>
+</div>
+<script>
+  function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("passwordInput");
+    var togglePasswordIcon = document.getElementById("togglePasswordIcon");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      togglePasswordIcon.classList.remove("fa-eye-slash");
+      togglePasswordIcon.classList.add("fa-eye");
+    } else {
+      passwordInput.type = "password";
+      togglePasswordIcon.classList.remove("fa-eye");
+      togglePasswordIcon.classList.add("fa-eye-slash");
+    }
+  }
+</script>
+
+
+{% endblock %}

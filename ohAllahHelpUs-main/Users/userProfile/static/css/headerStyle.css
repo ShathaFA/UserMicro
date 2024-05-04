@@ -1,0 +1,234 @@
+/* Basic styling */
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  padding-top: 70px;
+}
+
+header {
+  height: 70px;
+  background-color: rgb(255, 255, 255);
+  padding: 10px 5%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Styling for the logo */
+.logo {
+  margin-right: 20px;
+}
+
+.logo img {
+  width: auto;
+  height: 50px;
+}
+
+h6 {
+ font-family: Staatliches, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 18px; 
+  color: #543787;
+}
+
+.nav-header {
+  color: #ffffff;
+}
+
+/* Styling for the search bar */
+.InputContainer-search {
+  padding-right: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 0.5px solid #543787;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 7px 5px 7.3px 0;
+  flex: 1;
+  max-width: 30%;
+  background-color: rgb(255, 255, 255);
+}
+
+.input-search {
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  caret-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+}
+
+.input-search,
+select,
+text {
+  color: #543787;
+  font-size: 1em;
+}
+
+::placeholder {
+  color: #543787;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: #543787;
+}
+
+.labelforsearch {
+  cursor: text;
+  padding: 0px 12px;
+}
+
+.searchIcon {
+  width: 15px;
+}
+
+.border {
+  height: 40%;
+  width: 1.5px;
+  background-color: #543787;
+}
+
+.micIcon {
+  width: 12px;
+}
+
+.micButton {
+  padding: 0px 10px 0px 10px;
+  border: none;
+  background-color: transparent;
+  height: 40px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.searchIcon path {
+  fill: #543787;
+}
+
+.micIcon path {
+  fill: #543787;
+}
+
+.Noti-button:active {
+  transform: scale(0.8);
+}
+
+/* Styling for the profile and home buttons */
+.profile-button {
+  color: #fff;
+  border: 1px solid #543787;
+  padding: 8px;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 18px;
+  background-color: #543787;
+}
+
+.profile-button:hover {
+  color: #fff;
+  border: 1px solid #543787;
+  background-color: #fbb130;
+}
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+  0%,
+  100% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  45% {
+    transform: rotateZ(5deg);
+  }
+
+  60% {
+    transform: rotateZ(-5deg);
+  }
+
+  75% {
+    transform: rotateZ(2deg);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 1000px) {
+  header {
+    padding: 0px 2%;
+    background-color: #ffffff; /* Added background color */
+    height: auto;
+    min-height: 155px;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .InputContainer-search {
+    margin-right: 0;
+    margin-bottom: 10px;
+    max-width: 80%;
+  }
+
+  .input-search {
+    width: 100%;
+    margin-right: 5px;
+  }
+
+  .micButton {
+    padding: 0px 8px 0px 8px;
+  }
+
+  .profile-button {
+    margin-left: 10px;
+  }
+
+  .Noti-button {
+    margin-top: 10px;
+  }
+
+  /* Adjust padding for smaller screens */
+  body {
+    padding-top: 150px;
+  }
+}

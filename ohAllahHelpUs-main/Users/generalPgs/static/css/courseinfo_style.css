@@ -1,0 +1,325 @@
+/* External CSS links */
+.link {
+  color: #543787;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #3a2264;
+}
+
+/* Styles for courseinfo-infoSection */
+.courseinfo-infoSection {
+  display: flex;
+  align-items: center;
+  margin: 75px 110px;
+}
+
+.courseinfo-infoSection2 {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1000;
+  margin: 75px 110px;
+}
+
+/* Styles for courseInfoRight */
+.courseInfoRight {
+  flex: 1;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.image-and-info {
+  flex: 1;
+  padding: 0 20px;
+}
+
+/* Styles for about-image */
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Styles for info */
+.info {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.info h2 {
+  font-size: 31px;
+}
+
+.info p {
+  font-size: 14px;
+}
+
+.info button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 30px;
+  border: 2px solid rgba(84, 55, 134, 1);
+  background-color: rgb(255, 255, 255);
+  color: rgba(84, 55, 134, 1);
+  text-transform: capitalize;
+  transition: all 0.5s ease;
+}
+
+.info span {
+  font-weight: bold;
+}
+
+/* Styles for courseInfoNev */
+.courseInfoNev {
+  display: flex;
+  margin: 0px 110px;
+}
+
+/* Styles for navigation menu */
+.nav-course-info {
+  margin-top: 60px;
+  /* Adjusted margin */
+  margin-bottom: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin-left: 40px;
+  /* Adjusted margin */
+}
+
+.menu li a {
+  font-size: 16px;
+  /* Adjusted font size */
+}
+
+/* Styles for skill1, skill2, skill3, skill4 */
+.Category {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  margin-top: 5px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+/* Styles for course details */
+.course-details {
+  margin-top: 20px;
+}
+
+.course-details>div {
+  margin-bottom: 10px;
+}
+
+.course-details>div>span {
+  font-weight: bold;
+  color: rgba(255, 205, 78, 1);
+}
+
+/* Styles for courseInfo-Sections */
+.courseInfo-Sections {
+  margin-top: 20px;
+  border-top: 2px solid rgba(255, 205, 78, 1);
+  padding-top: 20px;
+}
+
+.courseInfo-Sections h3 {
+  font-size: 20px;
+}
+
+.courseInfo-Sections-moreInfo {
+  margin-top: 10px;
+}
+
+.courseInfo-Sections-moreInfo p {
+  font-size: 14px;
+  /* Adjusted font size */
+}
+
+/* Styles for Sections-box */
+.Sections-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.Sections-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.Sections-rating {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  color: gold;
+  font-size: 14px;
+}
+
+.rating-number {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.Sections-description {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.expand-details {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 14px;
+  /* Adjusted font size */
+}
+
+.Sections-details {
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.Sections-details-info {
+  display: none;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+.more-details {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  /* Adjust courseinfo-infoSection */
+  .courseinfo-infoSection,
+  .courseinfo-infoSection2 {
+    margin: 50px 20px;
+  }
+
+  
+
+  /* Adjust courseInfoNev */
+  .courseInfoNev {
+    margin: 0px 20px;
+  }
+
+  /* Adjust font sizes */
+  .info h2 {
+    font-size: 24px;
+  }
+
+  .info p {
+    font-size: 14px;
+  }
+
+  .info button {
+    font-size: 18px;
+  }
+
+  /* Adjust menu styles */
+  nav {
+    margin-top: 50px;
+  }
+
+  .menu li {
+    margin-right: 10px;
+  }
+
+  .menu li a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stack courseinfo-infoSection vertically */
+  .courseinfo-infoSection,
+  .courseinfo-infoSection2 {
+    flex-direction: column;
+    margin: 20px 10px;
+  }
+  .courseInfoNev {
+    display: flex;
+    margin: 0px 0px 0px 15px;
+  }
+
+  /* Adjust courseInfoRight width */
+  .courseInfoRight {
+    width: 300px;
+  }
+
+  /* Adjust padding and margins */
+  .image-and-info {
+    padding: 0;
+  }
+
+  /* Adjust font sizes */
+  .info h2 {
+    font-size: 20px;
+  }
+
+  .info p {
+    font-size: 12px;
+  }
+
+  .info button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for smaller screens */
+  .courseinfo-infoSection,
+  .courseinfo-infoSection2 {
+    margin: 10px 0;
+  }
+
+  /* Adjust padding and margins */
+  .image-and-info {
+    padding: 0;
+  }
+
+  /* Adjust font sizes */
+  .info h2 {
+    font-size: 18px;
+  }
+
+  .info p {
+    font-size: 12px;
+  }
+
+  .info button {
+    font-size: 14px;
+  }
+
+  /* Adjust menu styles */
+  nav {
+    margin-top: 20px;
+  }
+
+  .menu li {
+    display: block;
+    /* Stack menu items vertically */
+    margin-bottom: 5px;
+  }
+}

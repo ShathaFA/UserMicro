@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho%3A400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A300%2C400%2C600%2C900" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Imprima%3A400" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway%3A300%2C400%2C600%2C900" />
+    <link rel="stylesheet" href="{% static 'css/edit-profile.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="profile-left">
+            <div class="profile-picture-container">
+                <img class="profile-picture" src="./assets/profile-image.jpg" alt="Profile Picture" />
+
+                <input type="file" class="profile-picture-input" />
+
+            </div>
+            <div class="profile-info">
+
+            </div>
+        </div>
+
+        <div class="profile-form">
+
+            <form method="post" id="edit-profile-form">
+                {% csrf_token %}
+
+                <div class="name-fields">
+                    <div>
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" />
+                    </div>
+                    <div>
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" />
+                    </div>
+                </div>
+
+                <div class="email-age-fields">
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" />
+                    </div>
+
+                    <div>
+                        <label for="age">Age</label>
+                        <input type="date" id="age" name="age" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password-container">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" class="password-input" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="re-password-container">Re-enter Password</label>
+                    <div class="password-container">
+                        <input type="password" id="re-password" name="re-password" class="password-input" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="bio">Areas of Interest</label>
+                    <!-- <textarea name="areasOfInterest" id="areasOfInterest" class="areasOfInterest" name="areasOfInterest" rows="4"
+                        style="width: 825px; height: 193px;"></textarea> -->
+                        <textarea name="areasOfInterest" id="areasOfInterest" class="areasOfInterest" name="areasOfInterest" rows="4" style="width: 825px; height: 193px;"></textarea>
+
+                </div>
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            var passwordInput = document.getElementById(inputId);
+            var toggleButton = document.querySelector(`[for="${inputId}"] .toggle-password`);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                toggleButton.textContent = "Show";
+            }
+        }
+
+        document.querySelector('.profile-picture-input').addEventListener('change', function (event) {
+            var profilePicture = document.querySelector('.profile-picture');
+            var file = event.target.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    profilePicture.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+
+        //ajax
+        document.addEventListener('DOMContentLoaded', function() {
+    fetch('api/', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include' // Ensure this matches your authentication setup
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('first-name').value = data.first_name;
+        document.getElementById('last-name').value = data.last_name;
+        document.getElementById('email').value = data.email;
+        // document.getElementById('birthday').value = data.user.birthday; 
+        document.getElementById('areasOfInterest').value = data.areas_of_interest;
+    })
+    .catch(error => console.error('Error fetching profile data:', error));
+});
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+document.querySelector('#edit-profile-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var formData = new FormData(this); // 'this' refers to the form element, collecting all input.
+
+    fetch('api/', {
+        method: 'POST',
+        body: formData, // Automatically set as 'multipart/form-data'
+        credentials: 'include',
+        headers: {
+        'X-CSRFToken': getCookie('csrftoken') // Add this line to include CSRF token
+    }})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse JSON response into JavaScript object
+    })
+    .then(data => {
+        console.log('Success:', data);
+        alert('Profile updated successfully!');
+        // Optionally, redirect or update the UI accordingly
+    })
+    .catch(error => {
+        console.error('Error updating profile:', error);
+        alert('Failed to update profile.');
+    });
+});
+
+
+    </script>
+</body>
+
+
+</html>
+{% endblock %}

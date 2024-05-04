@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="{% static 'css/EditStudentProfile.css' %}" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form">
+      <form method="post" id="edit-profile-form">
+        {% csrf_token %}
+
+        <div class="profile-picture">
+          <img src="{% static 'images/profile-img.png' %}" alt="" id="user-profile-picture" />
+          <label for="profile-upload" class="edit-icon">
+            <i class="fas fa-pencil-alt"></i>
+          </label>
+          <input type="file" id="profile-upload" accept="image/*" style="display: none" name="profile_pic" />
+        </div>
+
+        <div class="form-group">
+          <label for="first-name">First Name:</label>
+          <input type="text" id="first-name" name="first_name" />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name:</label>
+          <input type="text" id="last-name" name="last_name" />
+        </div>
+
+        <div class="form-group">
+          <label for="birthday">Birthday:</label>
+          <input type="date" id="birthday" name="birthday" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" />
+          <button type="button" id="show-password" class="show-password">
+            <i class="fas fa-eye"></i>
+          </button>
+
+        </div>
+
+        <div class="form-group">
+          <label for="Confirm-password">Confirm Password:</label>
+          <input type="password" id="Confirm-password" name="password" />
+          <button type="button" id="show-password2" class="show-password">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+        </div>
+
+        <div class="form-group">
+          <label for="areas_of_specialization">Your interest:</label>
+          <input type="text" id="areas_of_specialization" name="areas_of_specialization" />
+        </div>
+
+        <button type="submit" id="save-changes" class="btn-theme">
+          Save Changes
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="{% static 'js/stdEditProfile.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}

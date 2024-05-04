@@ -1,0 +1,748 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  padding-top: 70px;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 288px;
+  background-color: #fbfbfb;
+  color: rgba(84, 55, 134, 1);
+  padding: 20px;
+  transition: width 0.3s, display 0s;
+  overflow-y: auto;
+  height: calc(100vh - 190px);
+  scrollbar-width: thin;
+}
+
+.sidebar.collapsed {
+  display: none;
+}
+
+.sidebar .text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #543787;
+  text-decoration: underline;
+  text-decoration-color: #ccc;
+  cursor: pointer;
+}
+
+.sidebar .text:hover {
+  text-decoration-color: rgba(255, 205, 78, 1);
+}
+
+
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* .sidebar ul li a:hover {
+  color: rgb(255, 255, 255) ;
+  background: rgba(84, 55, 134, 1) ;
+} */
+
+.sidebar ul li .feat-show,
+.sidebar ul li .serv-show {
+  display: none;
+  padding-left: 20px;
+}
+
+.course-content {
+  margin-left: 250px;
+  padding: 20px;
+  width: calc(100% - 570px);
+  display: block;
+  margin: 0 auto;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.course-content img.coures-inner-img {
+  max-width: 100%;
+  width: 800px;
+  height: 300px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  display: block;
+  margin: 0 auto;
+}
+
+.course-content .header {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.course-content h1.Course-Title, #sectionTitle {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #513886;
+}
+
+
+.course-content .courese-info {
+  display: flex;
+  gap: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-theme{
+  color: white;
+  padding: 5px 5px;
+  text-transform: capitalize;
+  transition: all 0.5s ease;
+  box-shadow: black;
+  cursor: pointer;
+  margin-left: 50px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(84, 55, 134, 1);
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  color: rgba(84, 55, 134, 1);
+}
+
+
+.btn-theme:hover {
+  color: rgba(84, 55, 134, 1);
+  background-color: rgba(255, 205, 78, 1);
+}
+
+.Course-topic,
+.Course-deficality, #editSectionDescription {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #7d7c7c;
+  padding: 10px 0px 10px 25px;
+}
+
+.Course-topic:hover,
+.Course-deficality:hover {
+  color: rgba(254, 183, 55, 1);
+  transform: scale(1.1);
+}
+
+/* -------------------------------Add section style----------------------------------------- */
+/* Style the modal - hidden by default */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Enable opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  width: 40%;
+  /* Could be wider or narrower */
+  padding: 0px 50px 50px 50px;
+  border: 3px solid #513886;
+  border-radius: 30px;
+  background-color: #fff;
+  /* White */
+  position: relative;
+  /* To position the close button */
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* Add a zoom animation */
+@keyframes zoom {
+  from {
+    transform: scale(0, 0);
+  }
+
+  /* Start from 0 scale */
+  to {
+    transform: scale(1, 1);
+  }
+
+  /* Scale to 100% */
+}
+
+/* Style the close button */
+.close {
+  color: #513886;
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Style the create course button */
+.createSectionBtn, .editSectionBtn {
+  background-color: #513886;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Style form elements */
+
+.label-Course {
+  color: #513886;
+  font-weight: 100;
+  z-index: 100;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  position: relative;
+  left: 15px;
+  top: 9px;
+  background-color: #ffffff;
+  font-size: 18px;
+}
+
+.Ctext {
+  width: 100%;
+  padding: 10px;
+  border: 1.9px solid #513886;
+  border-radius: 7px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  line-height: 3ex;
+  position: relative;
+}
+
+.title-create-Section, .title-edit-Lesson, .title-edit-Section {
+  color: #513886;
+  /* Apply the specified color to h2 */
+  font-size: 48px;
+  /* Adjust font size */
+  margin-top: 10%;
+}
+
+::file-selector-button {
+  display: none;
+}
+
+/*---------------------------- Add lesson style--------------------------------- */
+/* Style the modal - hidden by default */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Enable opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  width: 40%;
+  /* Could be wider or narrower */
+  padding: 0px 50px 50px 50px;
+  border: 3px solid #513886;
+  border-radius: 30px;
+  background-color: #fff;
+  /* White */
+  position: relative;
+  /* To position the close button */
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* Add a zoom animation */
+@keyframes zoom {
+  from {
+    transform: scale(0, 0);
+  }
+
+  /* Start from 0 scale */
+  to {
+    transform: scale(1, 1);
+  }
+
+  /* Scale to 100% */
+  
+}
+
+/* Style the close button */
+.close {
+  color: #513886;
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Style the create lesson button */
+.createLessonBtn, .editLessonBtn {
+  background-color: #513886;
+  /* Apply the specified color */
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  /* Make it the same width as inputs */
+  margin-top: 10px;
+  /* Add space after form */
+}
+
+/* Style form elements */
+
+.label-Course {
+  color: #513886;
+  /* Apply the specified color to labels */
+  font-weight: 100;
+  z-index: 100;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  position: relative;
+  left: 15px;
+  top: 9px;
+  background-color: #ffffff;
+  font-size: 18px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1.9px solid #513886;
+  border-radius: 7px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  line-height: 3ex;
+  position: relative;
+}
+
+.title-create-Lesson {
+  color: #513886;
+  /* Apply the specified color to h2 */
+  font-size: 48px;
+  /* Adjust font size */
+  margin-top: 10%;
+}
+
+::file-selector-button {
+  display: none;
+}
+
+/* -----------------for editor------------------ */
+/* Styling the form container */
+.form1 {
+  /* Use flexbox for centering */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  width: 63%;
+  /* Adjust the width of the form */
+  background-color: #ffffff;
+  /* Light background color */
+  border: 2px solid rgb(217, 217, 217);
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Shadow effect */
+  margin: 0 auto;
+  /* Center the form container on the page */
+  padding: 20px;
+  /* Add padding */
+}
+
+/* Styling the editor container */
+#editor-container {
+  width: 100%;
+  height: 400px;
+  /* Adjust the height as needed */
+  border: 1px solid rgb(217, 217, 217);
+  /* Border color */
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Styling the button */
+.btn-theme-inner{
+  background-color: #513886;
+  padding: 8px 65px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 18px;
+  text-transform: capitalize;
+  transition: all 0.5s ease;
+  box-shadow: black;
+  display: block;
+  /* Ensure the button is a block-level element */
+  margin: 20px auto;
+  /* Center the button and add spacing */
+  cursor: pointer;
+}
+
+.btn-theme-inner:hover {
+  color: rgba(84, 55, 134, 1);
+  background-color: rgba(255, 205, 78, 1);
+}
+
+/* -------------------for the lesson content---------------------- */
+/* General styles */
+/* General styles */
+/* General styles */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f7f9fc;
+}
+
+.lesson-content {
+  max-width: 100%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+}
+
+.lesson-nav {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #555;
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: bold;
+  display: block;
+  border: 2px solid transparent;
+}
+
+.menu li a:hover {
+  background-color: #543787;
+  color: white;
+  border: 2px solid #543787;
+}
+
+.menu li a.active {
+  background-color: rgba(255, 205, 78, 1);
+  color: white;
+  border: 2px solid rgba(255, 205, 78, 1);
+}
+
+.lesson-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.lesson-image {
+  width: 60%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: block;
+  /* Ensure the image is treated as a block element */
+  margin: 0 auto;
+  /* Center the image horizontally */
+}
+
+.lesson-text,
+.lesson-media {
+  margin-bottom: 20px;
+  color: #666;
+  line-height: 1.6;
+  border-radius: 12px;
+}
+
+/* Hide sections initially */
+#content,
+#video,
+#audio {
+  display: none;
+}
+
+/* Show the active section */
+.active {
+  display: block;
+}
+
+/*--------------------------- responsiveness ----------------------------*/
+@media (max-width: 800px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    transform: none;
+  }
+
+  .course-content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .form1,
+  .lesson-image {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .lesson-title {
+    display: block;
+    /* Ensure the image is treated as a block element */
+    margin: 0 auto;
+    /* Center the image horizontally */
+    margin-bottom: 2%;
+  }
+
+  /* Make the sidebar collapse by default on smaller screens */
+  .sidebar.collapsed {
+    display: none;
+  }
+
+  .btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #513886;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+
+.edit-section, 
+.edit-lesson {
+  color: rgb(111, 188, 255);
+  cursor: pointer;
+  margin-right: 5px; 
+  z-index: 2;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border: 1px solid #543787;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-section:hover, 
+.edit-lesson:hover {
+  background-color: rgb(111, 188, 255);
+  color: white;
+}
+
+
+.delete-section,
+.delete-lesson {
+  color: rgb(255, 54, 54);
+  cursor: pointer;
+  margin-right: 5px; 
+  z-index: 2;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border: 1px solid #543787;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.delete-section:hover,
+.delete-lesson:hover{
+  background-color: rgb(255, 54, 54);
+  color: white;
+}
+
+.sectionTitle {
+  font-weight: bold;
+  /* Makes the section title bold */
+  display: inline-block;
+  /* Makes the title align properly with icons */
+  margin-left: 10px;
+  /* Adds space after the icons */
+}
+
+.fas.fa-caret-down {
+  margin-left: 5px;
+  /* Small gap between the title and caret icon */
+}
+
+.lesson-container {
+  display: flex;
+  align-items: center;
+}
+
+
+.addLessonBtn {
+  padding-left:50px;
+  text-transform: capitalize;
+  transition: all 0.5s ease;
+  box-shadow: black;
+  cursor: pointer;
+  margin-bottom: 15px;
+  border: 1px solid rgba(84, 55, 134, 1);
+  background-color: rgb(255, 255, 255);
+  border-radius: 50px;
+  color: rgba(84, 55, 134, 1);
+}
+.addLessonBtn:hover {
+  background: rgba(84, 55, 134, 1);
+  color:white;
+}
+
+.section-container {
+  display: flex;
+  align-items: center;
+}
+.section-container .edit-section, .section-container .delete-section {
+  margin-left: 5px; /* Adjust spacing as needed */
+}
+
+#editSectionDescription {
+  text-align: center;
+
+}
+
+/*----------------------for viose icons-------------------------*/
+  /* Styles for the buttons */
+  .button-voise {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+  
+  /* Style for the play button */
+  #playButton {
+    background-color: #62ff00; /* Blue */
+  }
+  
+  /* Style for the pause button */
+  #pauseButton {
+    background-color: #00ccff; /* Yellow */
+  }
+
+  /* Style for the complete lesson button */
+  #completeLessonButton {
+    background-color: #cc00ff; /* Grey */
+  }
+
+  /* Hover effect for buttons */
+  .button-voise:hover {
+    background-color: #45a049; /* Darker green */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Pressed effect for buttons */
+  .button-voise:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Style for icon */
+  .fa {
+    margin-right: 10px;
+  }
+
+  #voiceInputBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .microphone-icon {
+    color: #543787; /* Change color as needed */
+    font-size: 24px; /* Adjust size as needed */
+  }
+  
+  /* Hover effect */
+  #voiceInputBtn:hover .microphone-icon {
+    color: rgba(255, 205, 78, 1); /* Change color on hover */
+  }
+  

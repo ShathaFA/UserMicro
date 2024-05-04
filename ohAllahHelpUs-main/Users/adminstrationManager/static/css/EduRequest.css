@@ -1,0 +1,212 @@
+/* Base styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fa; /* Light background color */
+    color: #333; /* Dark text color */
+}
+
+/* Container styles */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto; /* Center the container */
+    padding: 30px;
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 12px; /* Rounded corners */
+}
+
+.go-back-AdminPanel {
+    background-color: #543787;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.go-back-AdminPanel{
+    color: rgba(84, 55, 134, 1);
+    background-color: rgba(255, 205, 78, 1);
+
+}
+
+/* Title styles */
+.title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2rem; /* Font size */
+    font-weight: bold;
+    color: #2c3e50; /* Dark color */
+}
+
+/* Search bar styles */
+.search-bar {
+    display: flex; /* Horizontal layout */
+    justify-content: center;
+    align-items: center; /* Align items center */
+    margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #d1d5db; /* Light border color */
+    border-radius: 8px 0 0 8px; /* Rounded corners */
+    outline: none;
+}
+
+.search-bar button {
+    padding: 12px 16px;
+    border: none;
+    background-color: #543787; /* Blue color */
+    color: #fff; /* White text */
+    border-radius: 0 8px 8px 0; /* Rounded corners */
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #FEB737; /* Darker blue on hover */
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove spacing between cells */
+    margin-bottom: 20px;
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+}
+
+thead {
+    background-color: #543787; /* Blue background */
+    color: #fff; /* White text */
+}
+
+th, td {
+    padding: 12px;
+    text-align: center; /* Center text */
+    border-bottom: 1px solid #e6e6e6; /* Light border color */
+    font-size: 1rem;
+}
+
+tbody tr:hover {
+    background-color: #f1f6fa; /* Light hover effect */
+}
+
+
+/* Button view, delete , deny styles */
+button.approve, button.deny, button.view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 10px; /* Space between buttons */
+    outline: none;
+}
+
+/* Apply specific colors to Font Awesome icons based on button class */
+button.approve i {
+    color: #2ecc71; /* Green for approve */
+}
+
+button.deny i {
+    color: #e74c3c; /* Red for deny */
+}
+
+button.view i {
+    color: #3498db; /* Blue for view */
+}
+
+/* Hover effects */
+button:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+
+.action-button:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+
+/* Popup styles */
+.popup {
+    display: none; /* Initially hidden */
+    position: fixed; /* Fixed position */
+    top: 0; /* Align at the top */
+    left: 0; /* Align at the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background overlay */
+    justify-content: center; /* Center content */
+    align-items: center; /* Center content */
+    z-index: 9999; /* Highest z-index */
+    padding: 20px;
+}
+
+.popup.active {
+    display: flex; /* Show the popup */
+}
+
+.popup-box {
+    background-color: #ffffff; /* White background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Maximum width */
+    text-align: center;
+}
+
+.popup-title {
+    margin-bottom: 15px; /* Space below title */
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #3498db; /* Blue color */
+}
+
+.write-here-text {
+    display: block; /* Block-level element */
+    font-weight: bold;
+    color: #2c3e50; /* Dark text color */
+    margin-bottom: 10px; /* Space below label */
+    position: absolute; /* Absolute positioning */
+    top: -10px; /* Position the label above the textarea */
+    left: 10px; /* Position the label to the left of the textarea */
+    background-color: white; /* White background for label */
+    padding: 0 5px; /* Padding around label text */
+}
+
+.popup-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db; /* Light border color */
+    border-radius: 8px;
+    outline: none;
+    resize: none; /* Prevent resizing */
+    margin-bottom: 15px;
+}
+
+.popup-submit {
+    padding: 10px 20px;
+    border: none;
+    background-color: #3498db; /* Blue background */
+    color: #fff; /* White text */
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.popup-submit:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
