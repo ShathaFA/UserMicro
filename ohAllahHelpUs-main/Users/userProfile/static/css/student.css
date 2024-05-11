@@ -172,7 +172,7 @@
     font-size: 15px;
     font-weight: 400;
     padding-bottom: 5px;
-    background-image: url(https://odoocdn.com/openerp_website/static/src/img/highlights/yellow_highlight_bold_05.svg);
+    /* background-image: url(https://odoocdn.com/openerp_website/static/src/img/highlights/yellow_highlight_bold_05.svg); */
     background-repeat: repeat;
     background-size: 89%;
     background-position: 1%;
@@ -523,3 +523,22 @@
     }
 }
 
+.progress-container {
+    margin-bottom: 20px;
+}
+
+.progress-bar-background {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+.progress-bar-fill {
+    background-color: rgba(255, 205, 78, 1);
+    height: 20px;
+    border-radius: 10px;
+    text-align: right;
+    color: white;
+    line-height: 20px;
+    padding-right: 5px;
+}

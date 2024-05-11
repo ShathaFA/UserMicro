@@ -746,3 +746,14 @@ body {
     color: rgba(255, 205, 78, 1); /* Change color on hover */
   }
   
+  .fas.fa-check {
+    color: green; /* Example to make the check mark green */
+    margin-left: 5px; /* Space between the title and the check mark */
+}
+
+.completed-lesson {
+  background-color: #FFEBAE; /* Green background */
+  color: white; /* White text for better contrast */
+  padding: 10px; /* Add some padding */
+  border-left: 5px solid rgba(255, 205, 78, 1); /* Add a distinct border */
+}

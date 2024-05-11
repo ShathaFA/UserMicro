@@ -21,6 +21,25 @@ $(document).ready(function () {
     },
   });
 
+
+// Fetch user ID dynamically and store it globally
+var currentUserId; // Global variable to hold the user ID
+$(document).ready(function () {
+    fetch("/userProfile/stdProfile/api/", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "include" // Necessary if you're handling sessions with cookies
+    })
+    .then(response => response.json())
+    .then(data => {
+        currentUserId = data.user.id; // Store the user ID globally
+    })
+    .catch(error => console.error('Error fetching user ID:', error));
+});
+
+
   // Toggle sidebar visibility when button with class `btn` is clicked
   $(".btn").click(function () {
     $(".sidebar").toggleClass("collapsed");
@@ -74,6 +93,18 @@ $(document).ready(function () {
     });
   }
 
+
+    function isUserCompletedLesson(completedStudents, currentUserId) {
+      if (typeof currentUserId === "undefined") {
+          console.error("currentUserId is undefined");
+          return false; // or handle the error in another appropriate way
+      }
+      var completedStudentsArray = completedStudents.split(',');
+      return completedStudentsArray.includes(currentUserId.toString());
+    }
+
+
+
   // Function to update course details in the UI based on fetched data
 
   function updateCourseDetails(course) {
@@ -112,7 +143,8 @@ $(document).ready(function () {
 
       section.lessons.forEach(function (lesson) {
         var $lessonItem = $("<li>").data("lesson-id", lesson.id);
-        var $lessonContainer = $("<div>").addClass("lesson-container");
+        var $lessonContainer = $("<div>").addClass("lesson-container").attr("data-lesson-id", lesson.id);  // Adding the data-lesson-id attribute
+
 
         var $lessonLink = $("<a>")
           .addClass("lessonTitle")
@@ -120,6 +152,12 @@ $(document).ready(function () {
           .data("content", lesson.contents)
           .data("lesson-id", lesson.id)
           .text(lesson.title);
+          if (isUserCompletedLesson(lesson.completed_students)) {
+            $lessonContainer.addClass('completed-lesson');
+        }
+        
+
+          
 
         $lessonContainer.append($lessonLink);
         $lessonItem.append($lessonContainer);
@@ -148,6 +186,9 @@ $(document).ready(function () {
 
   $(document).on("click", ".lessonTitle", function () {
     var lessonId = $(this).data("lesson-id");
+    // markLessonAsCompleted(lessonId); // Call the updated function with dynamic IDs
+    $('#completeLessonButton').data('lesson-id', lessonId);
+
     var contentsArray = $(this).data("content"); // This is an array
     var contentToDisplay = contentsArray.length > 0 && contentsArray[0].hasOwnProperty("text_content") ? contentsArray[0].text_content : "No content available";
 
@@ -167,35 +208,49 @@ $(document).ready(function () {
 });
 
 
+$('#completeLessonButton').click(function() {
+  var lessonId = $(this).data('lesson-id');
+  if (lessonId) {
+      markLessonAsCompleted(lessonId);
+  } else {
+      alert("Please select a lesson first.");
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   const button = document.getElementById('completeLessonButton');
   if (button) {
       button.addEventListener('click', function() {
-          markLessonAsCompleted(1, 101);  // Example IDs
+          var lessonId = $(this).data("lesson-id"); // Ensure this data attribute is present on the button
+          markLessonAsCompleted(lessonId);
       });
   }
 });
 
 
-function markLessonAsCompleted(lessonId, userId) {
+
+function markLessonAsCompleted(lessonId) {
   fetch(`http://127.0.0.1:8001/api/lessons/${lessonId}/complete`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
-          // Include authentication token if required
       },
-      body: JSON.stringify({ userId: userId })
+      body: JSON.stringify({ userId: currentUserId }) // assuming `currentUserId` is globally available
   })
   .then(response => response.json())
   .then(data => {
       if (data.success) {
           alert('Lesson marked as completed!');
+          $(`div[data-lesson-id="${lessonId}"]`).addClass('completed-lesson');
+
       } else {
           alert('Failed to mark lesson as completed: ' + data.message);
       }
   })
   .catch(error => console.error('Error:', error));
 }
+
+
 
 
 

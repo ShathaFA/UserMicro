@@ -544,6 +544,7 @@ select {
 
     background-color: #cccccc9a;  /* No background by default */
     transition: background-color 0.3s;  /* Smooth transition for background color */
+    z-index: 100;
 }
 .menu-icon:hover {
     background-color: rgba(92, 92, 92, 0.6); /* Corrected background color */
@@ -663,9 +664,7 @@ select {
         margin-top: 2%;
     }
 
-    .btn-theme-createcourse {
-        
-    }
+   
     .course-info {
         width: calc(50% - 20px);
         margin-left: 0;

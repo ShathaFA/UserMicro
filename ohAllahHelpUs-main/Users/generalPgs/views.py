@@ -28,10 +28,12 @@ def custom_login_required(function):
 class CourseListView(APIView):
     def get(self, request, *args, **kwargs):
         # Construct the full URL using the settings value
+        search_query = request.query_params.get('search', None)
+
         courses_service_url = settings.COURSES_SERVICE_URL
         endpoint = f"{courses_service_url}/courses/publishedCourses/api/"  # Adjusted path
 
-        response = requests.get(endpoint)
+        response = requests.get(endpoint, params={'search': search_query})  # Forwarding the search query
         if response.status_code == 200:
             # Process the data here if necessary before sending it to the front-end
             return Response(response.json())

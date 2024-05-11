@@ -96,6 +96,9 @@ text {
   width: 15px;
 }
 
+.searchButton:hover .searchIcon path {
+  fill: #fbb130;
+}
 .border {
   height: 40%;
   width: 1.5px;
@@ -106,7 +109,7 @@ text {
   width: 12px;
 }
 
-.micButton {
+.micButton, .searchButton {
   padding: 0px 10px 0px 10px;
   border: none;
   background-color: transparent;
@@ -215,7 +218,7 @@ text {
     margin-right: 5px;
   }
 
-  .micButton {
+  .micButton, .searchButton {
     padding: 0px 8px 0px 8px;
   }
 

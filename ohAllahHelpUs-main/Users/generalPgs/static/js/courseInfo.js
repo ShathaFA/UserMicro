@@ -13,9 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   .then((response) => response.json())
   .then((data) => {
+    console.log(data);  // Check what data looks like
+
     userID = data.user.id;  // Store the user ID in the variable
+    console.log('User ID:', userID);  // Output the user ID to confirm it's being set
+
   })
   .catch(error => console.error('Error fetching user data:', error));
+
 });
 
 

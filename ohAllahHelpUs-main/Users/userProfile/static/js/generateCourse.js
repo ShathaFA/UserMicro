@@ -1,3 +1,19 @@
+// script.js
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the close button element by its id
+    var closeButton = document.getElementById("closeModal");
+  
+    // Add an event listener to the close button
+    closeButton.addEventListener("click", function() {
+      // Get the modal element
+      var modal = document.getElementById("generateCourseModal");
+      // Toggle the display of the modal
+      modal.style.display = "none";
+    });
+  });
+  
+
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('generateCourseForm');
     form.addEventListener('submit', function(e) {
@@ -34,10 +50,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Your course was fully generated, please check your archive");
                 form.reset();
                 document.getElementById("createCourseModal").style.display = "none";
+                window.location.reload();
+                
+
+                document.getElementById("createCourseModal").style.display = "none";
             } else {
                 alert("Your course was generated with the basic info");
                 form.reset();
                 document.getElementById("createCourseModal").style.display = "none";
+                window.location.reload();
             }
         })
         .catch((error) => {
@@ -62,3 +83,5 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+

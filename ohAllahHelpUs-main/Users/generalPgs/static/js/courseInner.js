@@ -118,7 +118,7 @@ $(document).ready(function () {
           .attr("href", "#")
           .text("Add New Lesson")
       )
-    );
+    )
 
     $section.append($sectionLink).append($lessonsList);
     $sectionList.append($section);
@@ -244,6 +244,25 @@ $(document).ready(function () {
             .attr("href", "#")
             .text("Add New Lesson")
         )
+        
+      );
+      lessonsList.append(
+        $("<li>").append(
+          $("<a>")
+            .addClass("addQuizBtn")
+            .attr("href", "#")
+            .text("Add a Quiz")
+        )
+        
+      );
+      lessonsList.append(
+        $("<li>").append(
+          $("<a>")
+            .addClass("GenerateQuizBtn")
+            .attr("href", "#")
+            .text("Generate a Quiz")
+        )
+        
       );
 
       section.lessons.forEach(function (lesson) {

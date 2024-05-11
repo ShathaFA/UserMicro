@@ -75,6 +75,7 @@ class Student(Profile):
     def get_absolute_url(self):
         return reverse('student_detail', kwargs={'pk': self.pk})
 
+
 # Definition of Educator model
 class Educator(Profile):
     company = models.CharField(max_length=100, blank=True)

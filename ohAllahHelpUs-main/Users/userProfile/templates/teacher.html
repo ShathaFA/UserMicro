@@ -25,7 +25,7 @@
             alt=""
           />
           <h2 class="name-profile">Eyad Salem</h2>
-          <p class="ID-profile">4010365</p> 
+          <p class="ID-profile">4010365</p>
           <p class="ProfeTitle-profile">Software Engineer</p>
           <p class="company-profile">Work at AWS Acadimy Company</p>
           <div class="content">
@@ -66,16 +66,16 @@
       </div>
       <div>
         <div class="buttons-create-course-div">
-        <!------------- add new course------------------- -->
-        <button class="btn-theme-createcourse" id="createCourseBtn">
-          Create New Course
-        </button>
+          <!------------- add new course------------------- -->
+          <button class="btn-theme-createcourse" id="createCourseBtn">
+            Create New Course
+          </button>
 
-        <!------------- Generaye new course------------------- -->
-        <button class="btn-theme-createcourse" id="generateCourseBtn">
-          Generate New Course Using AI
-        </button>
-      </div>
+          <!------------- Generaye new course------------------- -->
+          <button class="btn-theme-createcourse" id="generateCourseBtn">
+            Generate New Course Using AI
+          </button>
+        </div>
       </div>
       <!-- -------------------------------pop-up create course---------------------------- -->
       <div id="createCourseModal" class="modal">
@@ -116,7 +116,7 @@
             <div class="input-with-microphone">
               <input
                 class="Ctext"
-                type="text" 
+                type="text"
                 id="courseCategory"
                 name="courseCategory"
                 placeholder="Enter course category.."
@@ -180,11 +180,18 @@
       </div>
 
       <!-- -------------------------------pop-up generate course---------------------------- -->
-      <div id="generateCourseModal" class="modal" >
+      <div id="generateCourseModal" class="modal">
         <div class="modal-content">
-          <span class="close">&times;</span>
+          <span class="close" id="closeModal">&times;</span>
           <h2 class="title-generate-coures">Generate Course Using AI</h2>
-          <div id="loadingIndicator" class="loader" style="display: none; border-color: #543787 transparent transparent transparent;"></div>
+          <div
+            id="loadingIndicator"
+            class="loader"
+            style="
+              display: none;
+              border-color: #543787 transparent transparent transparent;
+            "
+          ></div>
 
           <form
             id="generateCourseForm"
@@ -206,7 +213,6 @@
                 type="text"
                 id="gcourseTitle"
                 name="courseTitle"
-                placeholder="Enter course title.."
               />
             </div>
 
@@ -223,10 +229,8 @@
                 type="text"
                 id="gcourseCategory"
                 name="courseCategory"
-                placeholder="Enter course category.."
               />
             </div>
-
 
             <label class="label-Course" for="difficultyLevel"
               >Difficulty Level:
@@ -241,15 +245,12 @@
                 type="text"
                 id="gdifficultyLevel"
                 name="difficultyLevel"
-                placeholder="Enter course difficulty Level.."
               />
             </div>
-
 
             <br />
             <br />
             <button type="submit" class="generateCourseBtn">Generate</button>
-          
           </form>
         </div>
       </div>
@@ -311,6 +312,5 @@
 
   <script src="{% static 'js/tchProfile.js' %}"></script>
   <script src="{% static 'js/generateCourse.js' %}"></script>
-
 </body>
 {% endblock %}

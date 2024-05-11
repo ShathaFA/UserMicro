@@ -150,14 +150,17 @@ function renderCourses(courses, sectionId) {
     courses.forEach((course) => {
       const courseElement = document.createElement("div");
       courseElement.className = "course-info";
-
+      courseElement.setAttribute('onclick', `toggleMenu(document.getElementById('menu-content-${course.id}'))`);
       // Hamburger Menu Creation
+      
       const menu = document.createElement("div");
       menu.className = "hamburger-menu";
       const menuIcon = document.createElement("div");
       menuIcon.className = "menu-icon";
       menuIcon.textContent = "☰"; // Menu icon
-      menuIcon.onclick = function () {
+      menuIcon.onclick = function (event) {
+        event.stopPropagation();
+
         toggleMenu(this.nextElementSibling);
       }; // Toggle next sibling element which is the menu-content
       const menuContent = document.createElement("div");

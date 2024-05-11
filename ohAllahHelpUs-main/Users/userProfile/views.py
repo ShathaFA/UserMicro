@@ -21,6 +21,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.utils.encoding import force_str
 from generalPgs.views import listCourses
+from rest_framework.exceptions import NotFound
+
 
 
 from .models import CustomUser, Student, Educator  
@@ -46,6 +48,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 
 signer = Signer()
 User = get_user_model()
+courses_service_url = settings.COURSES_SERVICE_URL
 
 def verify_email(request, token):
     try:
@@ -223,17 +226,51 @@ class PasswordResetConfirmView(APIView):
 
 
 #For Student Profile
+# class StudentProfileView(APIView):
+#     permission_classes = [IsAuthenticated]
+#     def get(self, request, format=None):
+#         try:
+#             student_profile = Student.objects.get(user=request.user)
+#             serializer = StudentProfileSerializer(student_profile)
+#             return Response(serializer.data)
+#         except Student.DoesNotExist:
+#                 raise Http404("Student profile does not exist for this user.")
+    
+
 class StudentProfileView(APIView):
     permission_classes = [IsAuthenticated]
+
     def get(self, request, format=None):
         try:
             student_profile = Student.objects.get(user=request.user)
             serializer = StudentProfileSerializer(student_profile)
-            return Response(serializer.data)
-        except Student.DoesNotExist:
-                raise Http404("Student profile does not exist for this user.")
-    
 
+            # Make an API call to the course microservice
+            response = requests.get(f'{courses_service_url}/api/get_completed_courses_count/{request.user.id}')
+            response = requests.get(f'{courses_service_url}/api/get_course_counts/{request.user.id}')
+
+            if response.status_code == 200:
+                data = response.json()
+
+                completed_courses_count = data.get('completed_courses', 0)
+                total_enrolled_courses = data.get('total_enrolled_courses', 0)
+                # Calculate the completion percentage
+                if total_enrolled_courses > 0:
+                    completion_percentage = (completed_courses_count / total_enrolled_courses) * 100
+                else:
+                    completion_percentage = 0
+            else:
+                completed_courses_count = 'Error fetching data'
+                completion_percentage = 'Error fetching data'
+
+            # Adding completed courses count to the serialized data
+            serialized_data = serializer.data
+            serialized_data['completed_courses_count'] = completed_courses_count
+            serialized_data['completion_percentage'] = completion_percentage
+
+            return Response(serialized_data)
+        except Student.DoesNotExist:
+            raise NotFound("Student profile does not exist for this user.")
 
 class EditStudentProfileView(APIView):
     permission_classes = [IsAuthenticated]
