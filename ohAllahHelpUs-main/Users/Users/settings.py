@@ -155,5 +155,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Base URL for the Courses microservice
-SITE_DOMAIN = 'http://127.0.0.1:8000'
-COURSES_SERVICE_URL = 'http://localhost:8001'
+SITE_DOMAIN = 'http://54.146.212.138:8000'
+COURSES_SERVICE_URL = 'http://54.146.212.138:8001'
