@@ -246,24 +246,6 @@ $(document).ready(function () {
         )
         
       );
-      lessonsList.append(
-        $("<li>").append(
-          $("<a>")
-            .addClass("addQuizBtn")
-            .attr("href", "#")
-            .text("Add a Quiz")
-        )
-        
-      );
-      lessonsList.append(
-        $("<li>").append(
-          $("<a>")
-            .addClass("GenerateQuizBtn")
-            .attr("href", "#")
-            .text("Generate a Quiz")
-        )
-        
-      );
 
       section.lessons.forEach(function (lesson) {
         var $lessonItem = $("<li>").data("lesson-id", lesson.id);
