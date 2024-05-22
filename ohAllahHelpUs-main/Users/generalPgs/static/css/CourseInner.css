@@ -2,15 +2,28 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  padding-top: 70px;
+}
+
+.btn {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 5%;
+}
+
+.menu-fas {
+  color: #000;
 }
 
 .sidebar {
   position: fixed;
   left: 0;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
-  width: 288px;
+  width: 270px;
   background-color: #fbfbfb;
   color: rgba(84, 55, 134, 1);
   padding: 20px;
@@ -96,7 +109,8 @@ body {
   text-align: center;
 }
 
-.course-content h1.Course-Title, #sectionTitle {
+.course-content h1.Course-Title,
+#sectionTitle {
   margin-bottom: 10px;
   text-align: center;
   color: #513886;
@@ -110,7 +124,7 @@ body {
   margin: 0 auto;
 }
 
-.btn-theme{
+.btn-theme {
   color: white;
   padding: 5px 5px;
   text-transform: capitalize;
@@ -132,7 +146,8 @@ body {
 }
 
 .Course-topic,
-.Course-deficality, #editSectionDescription {
+.Course-deficality,
+#editSectionDescription {
   font-size: 1.2rem;
   margin-bottom: 5px;
   color: #7d7c7c;
@@ -186,12 +201,12 @@ body {
 /* Add a zoom animation */
 @keyframes zoom {
   from {
-    transform: scale(0, 0);
+      transform: scale(0, 0);
   }
 
   /* Start from 0 scale */
   to {
-    transform: scale(1, 1);
+      transform: scale(1, 1);
   }
 
   /* Scale to 100% */
@@ -209,7 +224,8 @@ body {
 }
 
 /* Style the create course button */
-.createSectionBtn, .editSectionBtn {
+.createSectionBtn,
+.editSectionBtn {
   background-color: #513886;
   color: #fff;
   font-size: 20px;
@@ -248,7 +264,9 @@ body {
   position: relative;
 }
 
-.title-create-Section, .title-edit-Lesson, .title-edit-Section {
+.title-create-Section,
+.title-edit-Lesson,
+.title-edit-Section {
   color: #513886;
   /* Apply the specified color to h2 */
   font-size: 48px;
@@ -301,16 +319,16 @@ body {
 /* Add a zoom animation */
 @keyframes zoom {
   from {
-    transform: scale(0, 0);
+      transform: scale(0, 0);
   }
 
   /* Start from 0 scale */
   to {
-    transform: scale(1, 1);
+      transform: scale(1, 1);
   }
 
   /* Scale to 100% */
-  
+
 }
 
 /* Style the close button */
@@ -325,7 +343,8 @@ body {
 }
 
 /* Style the create lesson button */
-.createLessonBtn, .editLessonBtn {
+.createLessonBtn,
+.editLessonBtn {
   background-color: #513886;
   /* Apply the specified color */
   color: #fff;
@@ -416,7 +435,7 @@ textarea {
 }
 
 /* Styling the button */
-.btn-theme-inner{
+.btn-theme-inner {
   background-color: #513886;
   padding: 8px 65px;
   border: none;
@@ -533,60 +552,132 @@ body {
 }
 
 /*--------------------------- responsiveness ----------------------------*/
-@media (max-width: 800px) {
+/* Add a meta viewport tag to ensure proper rendering and zooming */
+/* Responsive styles */
+@media (max-width: 1200px) {
   body {
-    flex-direction: column;
+      flex-direction: column;
+      margin-top: 20%;
   }
 
   .sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    transform: none;
+      width: 100%;
+      height: auto;
+      position: static;
+      transform: none;
   }
 
   .course-content {
-    width: 100%;
-    margin-left: 0;
+      width: 100%;
+      margin-left: 0;
+  }
+
+  /* Adjust buttons */
+  .btn {
+      margin-top: 20%;
+      position: fixed;
+      right: 22px;
+      border: 1px solid #543787;
+      background-color: #f8f9fa;
+      color: #543787;
+      padding: 10px;
+      border-radius: 0%;
+      cursor: pointer;
+  }
+
+  /* Adjust form and lesson image */
+  .form1,
+  .lesson-image {
+      width: 100%;
+      margin-left: 0;
+  }
+
+  /* Adjust lesson title */
+  .lesson-title {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 2%;
+  }
+
+  /* Hide collapsed sidebar */
+  .sidebar.collapsed {
+      display: none;
+  }
+}
+
+@media (max-width: 350px) {
+  body {
+      flex-direction: column;
+  }
+
+  .sidebar {
+      width: 100%;
+      height: auto;
+      position: static;
+      transform: none;
+      top: 100%;
+      margin-top: 40%;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+      flex-direction: column;
+      margin-top: 20%;
+  }
+
+  .sidebar {
+      width: 100%;
+      height: auto;
+      position: static;
+      transform: none;
+      top: 100%;
+  }
+
+  .course-content {
+      width: 100%;
+      margin-left: 0;
   }
 
   .form1,
   .lesson-image {
-    width: 100%;
-    margin-left: 0;
+      width: 100%;
+      margin-left: 0;
   }
 
   .lesson-title {
-    display: block;
-    /* Ensure the image is treated as a block element */
-    margin: 0 auto;
-    /* Center the image horizontally */
-    margin-bottom: 2%;
+      display: block;
+      /* Ensure the image is treated as a block element */
+      margin: 0 auto;
+      /* Center the image horizontally */
+      margin-bottom: 2%;
   }
 
   /* Make the sidebar collapse by default on smaller screens */
   .sidebar.collapsed {
-    display: none;
+      display: none;
   }
 
   .btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #513886;
-    color: white;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
+      margin-top: 20%;
+      position: fixed;
+      right: 22px;
+      border: 1px solid #543787;
+      background-color: #f8f9fa;
+      color: #543787;
+      padding: 10px;
+      border-radius: 0%;
+      cursor: pointer;
   }
+
 }
 
 
-.edit-section, 
+.edit-section,
 .edit-lesson {
   color: rgb(111, 188, 255);
   cursor: pointer;
-  margin-right: 5px; 
+  margin-right: 5px;
   z-index: 2;
   font-size: 11px;
   font-weight: bold;
@@ -598,7 +689,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.edit-section:hover, 
+.edit-section:hover,
 .edit-lesson:hover {
   background-color: rgb(111, 188, 255);
   color: white;
@@ -609,7 +700,7 @@ body {
 .delete-lesson {
   color: rgb(255, 54, 54);
   cursor: pointer;
-  margin-right: 5px; 
+  margin-right: 5px;
   z-index: 2;
   font-size: 11px;
   font-weight: bold;
@@ -622,7 +713,7 @@ body {
 }
 
 .delete-section:hover,
-.delete-lesson:hover{
+.delete-lesson:hover {
   background-color: rgb(255, 54, 54);
   color: white;
 }
@@ -648,7 +739,7 @@ body {
 
 
 .addLessonBtn {
-  padding-left:50px;
+  padding-left: 50px;
   text-transform: capitalize;
   transition: all 0.5s ease;
   box-shadow: black;
@@ -659,17 +750,21 @@ body {
   border-radius: 50px;
   color: rgba(84, 55, 134, 1);
 }
+
 .addLessonBtn:hover {
   background: rgba(84, 55, 134, 1);
-  color:white;
+  color: white;
 }
 
 .section-container {
   display: flex;
   align-items: center;
 }
-.section-container .edit-section, .section-container .delete-section {
-  margin-left: 5px; /* Adjust spacing as needed */
+
+.section-container .edit-section,
+.section-container .delete-section {
+  margin-left: 5px;
+  /* Adjust spacing as needed */
 }
 
 #editSectionDescription {
@@ -678,82 +773,78 @@ body {
 }
 
 /*----------------------for viose icons-------------------------*/
-  /* Styles for the buttons */
-  .button-voise {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 12px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 13px;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 50px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    outline: none;
-  }
-  
-  /* Style for the play button */
-  #playButton {
-    background-color: #62ff00; /* Blue */
-  }
-  
-  /* Style for the pause button */
-  #pauseButton {
-    background-color: #00ccff; /* Yellow */
-  }
-
-  /* Style for the complete lesson button */
-  #completeLessonButton {
-    background-color: #cc00ff; /* Grey */
-  }
-
-  /* Hover effect for buttons */
-  .button-voise:hover {
-    background-color: #45a049; /* Darker green */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Pressed effect for buttons */
-  .button-voise:active {
-    transform: translateY(1px);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Style for icon */
-  .fa {
-    margin-right: 10px;
-  }
-
-  #voiceInputBtn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .microphone-icon {
-    color: #543787; /* Change color as needed */
-    font-size: 24px; /* Adjust size as needed */
-  }
-  
-  /* Hover effect */
-  #voiceInputBtn:hover .microphone-icon {
-    color: rgba(255, 205, 78, 1); /* Change color on hover */
-  }
-  
-  .fas.fa-check {
-    color: green; /* Example to make the check mark green */
-    margin-left: 5px; /* Space between the title and the check mark */
+/* Styles for the buttons */
+.button-voise {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
 }
 
-.completed-lesson {
-  background-color: #FFEBAE; /* Green background */
-  color: white; /* White text for better contrast */
-  padding: 10px; /* Add some padding */
-  border-left: 5px solid rgba(255, 205, 78, 1); /* Add a distinct border */
+/* Style for the play button */
+#playButton {
+  background-color: #62ff00;
+  /* Blue */
+}
+
+/* Style for the pause button */
+#pauseButton {
+  background-color: #00ccff;
+  /* Yellow */
+}
+
+/* Style for the complete lesson button */
+#completeLessonButton {
+  background-color: #cc00ff;
+  /* Grey */
+}
+
+/* Hover effect for buttons */
+.button-voise:hover {
+  background-color: #45a049;
+  /* Darker green */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Pressed effect for buttons */
+.button-voise:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for icon */
+.fa {
+  margin-right: 10px;
+}
+
+#voiceInputBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.microphone-icon {
+  color: #543787;
+  /* Change color as needed */
+  font-size: 24px;
+  /* Adjust size as needed */
+}
+
+/* Hover effect */
+#voiceInputBtn:hover .microphone-icon {
+  color: rgba(255, 205, 78, 1);
+  /* Change color on hover */
 }

@@ -60,7 +60,7 @@ section {
 
 .btn-theme {
     padding: 12px 30px;
-    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    background-color: #543787;
     border-radius: 30px;
     font-size: 16px;
     text-transform: capitalize;
@@ -68,7 +68,7 @@ section {
     box-shadow: black;
     border: 2px solid rgba(84, 55, 134, 1);
     cursor: pointer;
-    color: rgba(84, 55, 134, 1);
+    color: rgb(255, 255, 255);
 }
 
 .btn-theme:hover {

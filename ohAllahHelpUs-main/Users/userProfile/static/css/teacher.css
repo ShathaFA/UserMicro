@@ -531,23 +531,24 @@ select {
 }
 
 .menu-icon {
-    font-size: 15px;
+    font-size: 13px;
     cursor: pointer;
     z-index: 1000;  /* Ensure it is above other content */
     padding: 10px;  /* Uniform padding */
     border-radius: 50%;  /* Rounds the corners to make a circle */
     display: inline-block;  /* Allows the element to be sized properly */
-    width: 30px;  /* Explicit width */
-    height: 30px;  /* Explicit height */
+    width: 35px;  /* Explicit width */
+    height: 35px;  /* Explicit height */
     text-align: center;  /* Centers the icon horizontally */
     line-height: 15px;  /* Adjusted to match the height for vertical centering */
 
-    background-color: #cccccc9a;  /* No background by default */
+    background-color: rgb(255, 255, 255);
+    /* No background by default */
     transition: background-color 0.3s;  /* Smooth transition for background color */
     z-index: 100;
 }
 .menu-icon:hover {
-    background-color: rgba(92, 92, 92, 0.6); /* Corrected background color */
+    background-color:rgb(227, 227, 227); /* Corrected background color */
 }
 .menu{
     margin-bottom: 0;
