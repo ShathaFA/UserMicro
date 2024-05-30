@@ -232,7 +232,6 @@ class CourseDeleteProxyView(APIView):
     def delete(self, request, pk, format=None):
         courses_service_url = f"{settings.COURSES_SERVICE_URL}/courses/delete/{pk}/"
         response = requests.delete(courses_service_url)
-
         # Forward the exact response from the Course Microservice
         return Response(status=response.status_code)
 

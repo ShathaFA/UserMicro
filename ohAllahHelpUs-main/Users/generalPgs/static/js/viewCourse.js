@@ -244,7 +244,7 @@ function markLessonAsCompleted(lessonId) {
           $(`div[data-lesson-id="${lessonId}"]`).addClass('completed-lesson');
 
       } else {
-          alert('Failed to mark lesson as completed: ' + data.message);
+          alert('Only Students can use this feature');
       }
   })
   .catch(error => console.error('Error:', error));

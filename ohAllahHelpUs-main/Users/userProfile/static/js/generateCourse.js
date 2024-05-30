@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         // Send the data using fetch API
-        fetch('http://54.146.212.138:8001/generate-course-content/', {
+        fetch('http://127.0.0.1:8001/generate-course-content/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

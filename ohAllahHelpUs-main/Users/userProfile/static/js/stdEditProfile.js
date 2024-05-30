@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("last-name").value = data.last_name;
       document.getElementById("email").value = data.email;
       document.getElementById("birthday").value = data.birthday;
-      document.getElementById("areas_of_specialization").value = data.areas_of_interest;
+      document.getElementById("areas_of_interest").value = data.areas_of_interest;
       document.getElementById("user-profile-picture").src = data.profile_pic;
     })
     .catch((error) => console.error("Error fetching profile data:", error));

@@ -329,7 +329,7 @@ function searchCategory() {
 window.addEventListener("DOMContentLoaded", () => {
   const totalCoursesSpan = document.getElementById("total-courses");
 
-  const totalCourses = 105; /*  total courses value */
+  const totalCourses = 3; /*  total courses value */
 
   animateNumber(totalCoursesSpan, totalCourses);
 });
