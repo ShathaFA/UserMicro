@@ -738,7 +738,7 @@ body {
 }
 
 
-.addLessonBtn {
+.addLessonBtn, .generateLessonBtn {
   padding-left: 50px;
   text-transform: capitalize;
   transition: all 0.5s ease;
@@ -751,7 +751,7 @@ body {
   color: rgba(84, 55, 134, 1);
 }
 
-.addLessonBtn:hover {
+.addLessonBtn:hover, .generateLessonBtn:hover {
   background: rgba(84, 55, 134, 1);
   color: white;
 }

@@ -84,23 +84,29 @@
       </div>
     </div>
 
-  <!-- for add section  -->
-  <div class="modal" id="createSectionModal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 class="title-create-Section">
-        Add New Section<i
-          class="fa-solid fa-microphone-lines"
-          style="color: #513886"
-        ></i>
-      </h2>
-      <form id="sectionForm">
-        <input
-          type="hidden"
-          name="csrfmiddlewaretoken"
-          value="{{ csrf_token }}"
-        />
-          <label class="label-Course" for="sectionTitle">Section Title: <i class="fa-solid fa-microphone-lines microphone-icon" data-target="sectionTitle"></i></label>
+    <!-- for add section  -->
+    <div class="modal" id="createSectionModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="title-create-Section">
+          Add New Section<i
+            class="fa-solid fa-microphone-lines"
+            style="color: #513886"
+          ></i>
+        </h2>
+        <form id="sectionForm">
+          <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="{{ csrf_token }}"
+          />
+          <label class="label-Course" for="sectionTitle"
+            >Section Title:
+            <i
+              class="fa-solid fa-microphone-lines microphone-icon"
+              data-target="sectionTitle"
+            ></i
+          ></label>
           <div class="input-with-microphone">
             <input
               class="Ctext"
@@ -108,24 +114,30 @@
               id="sectionTitle"
               name="sectionTitle"
               placeholder="Enter section title.."
-              style="text-align: left;"
+              style="text-align: left"
             />
           </div>
-        
-        <label class="label-Course" for="sectionDesc">Section Description: <i class="fa-solid fa-microphone-lines microphone-icon" data-target="sectionDesc"></i></label>
-        <div class="input-with-microphone">
-          <input
-            class="Ctext"
-            type="text"
-            id="sectionDesc"
-            name="course-description"
-            placeholder="Enter section description.."
-          />
-        </div>
-        <button type="submit" class="createSectionBtn">Create</button>
-      </form>
+
+          <label class="label-Course" for="sectionDesc"
+            >Section Description:
+            <i
+              class="fa-solid fa-microphone-lines microphone-icon"
+              data-target="sectionDesc"
+            ></i
+          ></label>
+          <div class="input-with-microphone">
+            <input
+              class="Ctext"
+              type="text"
+              id="sectionDesc"
+              name="course-description"
+              placeholder="Enter section description.."
+            />
+          </div>
+          <button type="submit" class="createSectionBtn">Create</button>
+        </form>
+      </div>
     </div>
-  </div>
 
     <!-- for edit section  -->
     <div class="modal" id="editSectionModal">
@@ -168,37 +180,81 @@
       </div>
     </div>
 
-  <!-- for add lesson  -->
-  <div class="modal" id="createLessonModal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 class="title-create-Lesson">
-        Add New Lesson<i
-          class="fa-solid fa-microphone-lines"
-          style="color: #513886"
-        ></i>
-      </h2>
-      <form id="lessonForm">
-        <input
-          type="hidden"
-          name="csrfmiddlewaretoken"
-          value="{{ csrf_token }}"
-        />
-        <label class="label-Course" for="lessonTitle">Lesson Title:  <i class="fa-solid fa-microphone-lines microphone-icon" data-target="lessonTitle"></i></label>
-        <div class="input-with-microphone">
-        <input
-          class="Ctext"
-          type="text"
-          id="lessonTitle"
-          name="lessonTitle"
-          placeholder="Enter lesson title.."
-        />
-      </div>
+    <!-- for add lesson  -->
+    <div class="modal" id="createLessonModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="title-create-Lesson">
+          Add New Lesson<i
+            class="fa-solid fa-microphone-lines"
+            style="color: #513886"
+          ></i>
+        </h2>
+        <form id="lessonForm">
+          <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="{{ csrf_token }}"
+          />
+          <label class="label-Course" for="lessonTitle"
+            >Lesson Title:
+            <i
+              class="fa-solid fa-microphone-lines microphone-icon"
+              data-target="lessonTitle"
+            ></i
+          ></label>
+          <div class="input-with-microphone">
+            <input
+              class="Ctext"
+              type="text"
+              id="lessonTitle"
+              name="lessonTitle"
+              placeholder="Enter lesson title.."
+            />
+          </div>
           <button type="submit" class="createLessonBtn">Create</button>
         </form>
       </div>
     </div>
 
+    <!-- for generate lesson  -->
+    <div class="modal" id="generateLessonModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="title-create-Lesson">
+          Generate New Lesson<i
+            class="fa-solid fa-microphone-lines"
+            style="color: #513886"
+          ></i>
+        </h2>
+        <form id="lessonForm">
+          <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="{{ csrf_token }}"
+          />
+          <label class="label-Course" for="lessonTitle"
+            >Lesson Title:
+            <i
+              class="fa-solid fa-microphone-lines microphone-icon"
+              data-target="lessonTitle"
+            ></i
+          ></label>
+          <div class="input-with-microphone">
+            <input
+              class="Ctext lesson_name"
+              type="text"
+              id="lesson_name"
+              name="lessonName"
+              placeholder="Enter lesson title.."
+            />
+            <input name="sectionTitle" type="hidden">
+
+          </div>
+          <button type="button" class="generateLessonBtnF">Generate</button>
+        </form>
+      </div>
+    </div>
     <br />
     <!-- for the editor -->
     <div action="" class="form1" style="display: none">
@@ -206,7 +262,12 @@
       <!-- Add a div to hold the Quill editor -->
       <div id="editor-container"></div>
       <!-- Add buttons for voice input and editor control -->
-      <button id="voiceInputBtn"><i class="fa-solid fa-microphone-lines microphone-icon" data-target="lessonTitle"></i></button>
+      <button id="voiceInputBtn">
+        <i
+          class="fa-solid fa-microphone-lines microphone-icon"
+          data-target="lessonTitle"
+        ></i>
+      </button>
       <button id="editBtn" class="btn-theme-inner">Edit</button>
     </div>
 
@@ -216,7 +277,6 @@
 
     <!-- JavaScript code for speech recognition and editor control -->
     <script>
-
       // Function to handle speech recognition and insert text into Quill editor
       function handleVoiceInput() {
         const recognition = new webkitSpeechRecognition(); // Use appropriate speech recognition object based on the API you're using

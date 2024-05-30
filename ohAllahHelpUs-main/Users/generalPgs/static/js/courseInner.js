@@ -47,6 +47,22 @@ $(document).ready(function () {
       .css("display", "block"); // Store it in the modal for later use
   });
 
+  // Opens modal and stores section ID when `.addLessonBtn` is clicked
+  $(document).on("click", ".generateLessonBtn", function () {
+
+  // Navigate up to find the nearest 'li.list-sidenev' which should be the container for the entire section
+  var $sectionContainer = $(this).closest("li.list-sidenev");
+
+  // Clone the '.sectionTitle', remove children, and get the text
+  var sectionTitle = $sectionContainer.find('.sectionTitle').clone().children().remove().end().text().trim();
+
+  console.log("Section Title:", sectionTitle);  // Check what this outputs
+
+  // Assuming you store this title in a hidden input within a modal
+  $('#generateLessonModal').find("input[name='sectionTitle']").val(sectionTitle);
+  $('#generateLessonModal').data("sectionId", $sectionContainer.data("section-id"));
+  $("#generateLessonModal").css("display", "block");
+  });
   // Display the create section modal
   $("#createSectionBtn").click(function () {
     $("#createSectionModal").css("display", "block");
@@ -118,7 +134,7 @@ $(document).ready(function () {
           .attr("href", "#")
           .text("Add New Lesson")
       )
-    )
+    );
 
     $section.append($sectionLink).append($lessonsList);
     $sectionList.append($section);
@@ -213,6 +229,7 @@ $(document).ready(function () {
 
       // Create a container for the section title and icons
       var sectionContainer = $("<div>").addClass("section-container");
+      
 
       var editIcon = $("<span>")
         .addClass("fas fa-edit edit-section")
@@ -244,7 +261,14 @@ $(document).ready(function () {
             .attr("href", "#")
             .text("Add New Lesson")
         )
-        
+      );
+      lessonsList.append(
+        $("<li>").append(
+          $("<a>")
+            .addClass("generateLessonBtn")
+            .attr("href", "#")
+            .text("Generate New Lesson")
+        )
       );
 
       section.lessons.forEach(function (lesson) {
@@ -277,6 +301,51 @@ $(document).ready(function () {
       sectionEl.append(sectionContainer).append(lessonsList);
       $(".sidebar > ul").append(sectionEl);
     });
+
+    $(document).on("click", ".generateLessonBtnF", function () {
+
+      var courseName = course.title;
+      var courseDescription = course.description;
+      var sectionTitle = $('#generateLessonModal').find("input[name='sectionTitle']").val();
+      var sectionDescription = 'sectionDescription'
+
+      var lessonName = $("#generateLessonModal").find("input[name='lessonName']").val();  // Ensure you have this input in your modal
+
+      console.log("Section Title from Modal:", sectionTitle);
+
+      var postData = {
+        course_name: courseName,
+        course_description: courseDescription,
+        section_name: sectionTitle,
+        section_description: sectionDescription,
+        lesson_name: lessonName,
+      };
+
+      // AJAX POST request to generate lesson content
+      $.ajax({
+        url: "http://127.0.0.1:8001/generate-lesson-content/",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(postData),
+        success: function (response) {
+          console.log("Post Data:", postData);
+          console.log("Lesson content generated successfully:", response);
+          alert("Lesson content generated successfully!");
+          window.location.reload(); // Reload the page or dynamically remove the section from UI
+
+          // Optionally update UI or take other actions here
+        },
+        error: function (xhr) {
+          console.log("Post Data:", postData);
+
+          console.error(
+            "Error while generating lesson content:",
+            xhr.responseText
+          );
+          alert("Failed to generate lesson content. Please try again.");
+        },
+      });
+    });
   }
 
   // Initial fetch of course details to populate UI
@@ -297,34 +366,30 @@ $(document).ready(function () {
   $(document).on("click", ".lessonTitle", function () {
     var lessonId = $(this).data("lesson-id");
     var contents = $(this).data("content") || [];
-    console.log(contents);  // Log to see the actual content data structure
+    console.log(contents); // Log to see the actual content data structure
 
-    quill.setContents([]);  // Clear existing contents
+    quill.setContents([]); // Clear existing contents
 
     if (contents.length > 0) {
-        var firstContent = contents[0];
-        console.log(firstContent);  // Check what's in the first content item
-        if (firstContent.type === 'txt' && firstContent.text_content) {
-            quill.clipboard.dangerouslyPasteHTML(0, firstContent.text_content);
-        } else if (firstContent.reference) {
-            quill.clipboard.dangerouslyPasteHTML(0, firstContent.reference);
-        } else {
-            quill.setText('No content available.');
-        }
-        $('#editor-container').data('content-id', firstContent.id);
+      var firstContent = contents[0];
+      console.log(firstContent); // Check what's in the first content item
+      if (firstContent.type === "txt" && firstContent.text_content) {
+        quill.clipboard.dangerouslyPasteHTML(0, firstContent.text_content);
+      } else if (firstContent.reference) {
+        quill.clipboard.dangerouslyPasteHTML(0, firstContent.reference);
+      } else {
+        quill.setText("No content available.");
+      }
+      $("#editor-container").data("content-id", firstContent.id);
     } else {
-        quill.setText('No content available.');
-        $('#editor-container').removeData('content-id');
+      quill.setText("No content available.");
+      $("#editor-container").removeData("content-id");
     }
 
-
-
-    $('#editor-container').data('lesson-id', lessonId);
+    $("#editor-container").data("lesson-id", lessonId);
     $(".course-content").hide();
     $(".form1").show();
-});
-
-
+  });
 
   $(document).on("click", ".edit-lesson", function () {
     var lessonId = $(this).data("lesson-id"); // Retrieve the lesson ID stored in the icon's data attribute
@@ -345,7 +410,10 @@ $(document).ready(function () {
       .closest(".section-container")
       .find(".sectionTitle")
       .text();
-      var currentDescription = $(this).closest('.section-container').find('.sectionTitle').data('description');
+    var currentDescription = $(this)
+      .closest(".section-container")
+      .find(".sectionTitle")
+      .data("description");
 
     // Fill in the modal inputs
     $("#editSectionModal #editSectionTitle").val(currentTitle);
@@ -421,47 +489,47 @@ var quill = new Quill("#editor-container", {
 
 function saveContent() {
   var contentHtml = quill.root.innerHTML;
-  var plainText = contentHtml.replace(/<[^>]+>/g, '');  // Regex to remove HTML tags
+  var plainText = contentHtml.replace(/<[^>]+>/g, ""); // Regex to remove HTML tags
 
-  var contentId = $('#editor-container').data('content-id');
-  var lessonId = $('#editor-container').data('lesson-id');
+  var contentId = $("#editor-container").data("content-id");
+  var lessonId = $("#editor-container").data("lesson-id");
 
   if (!lessonId) {
     alert("Lesson ID is not set. Please make sure you're editing a lesson.");
     return;
-}
+  }
 
-  var url = '/editContent/api/' + (contentId ? contentId + '/' : '');  // Adjusting URL based on whether updating or creating
-  var method = contentId ? 'PUT' : 'POST';
+  var url = "/editContent/api/" + (contentId ? contentId + "/" : ""); // Adjusting URL based on whether updating or creating
+  var method = contentId ? "PUT" : "POST";
 
   $.ajax({
-      url: url,
-      type: method,
-      contentType: 'application/json',
-      data: JSON.stringify({
-          id: contentId,
-          lesson_id: lessonId,
-          type: 'txt',
-          text_content: plainText  
-      }),
-      success: function(response) {
-          console.log('Content saved successfully:', response);
-          alert('Content saved successfully!');
-          if (!contentId) {
-              $('#editor-container').data('content-id', response.id);  // Set new content ID if created
-          }
-          window.location.reload();
-      },
-      error: function(xhr) {
-          console.error('Failed to save content:', xhr.responseText);
-          alert('Failed to save content. Please try again.');
+    url: url,
+    type: method,
+    contentType: "application/json",
+    data: JSON.stringify({
+      id: contentId,
+      lesson_id: lessonId,
+      type: "txt",
+      text_content: plainText,
+    }),
+    success: function (response) {
+      console.log("Content saved successfully:", response);
+      alert("Content saved successfully!");
+      if (!contentId) {
+        $("#editor-container").data("content-id", response.id); // Set new content ID if created
       }
+      window.location.reload();
+    },
+    error: function (xhr) {
+      console.error("Failed to save content:", xhr.responseText);
+      alert("Failed to save content. Please try again.");
+    },
   });
 }
 
-
-document.querySelector('.btn-theme-inner').addEventListener('click', saveContent);
-
+document
+  .querySelector(".btn-theme-inner")
+  .addEventListener("click", saveContent);
 
 // Handling form submission with rich text data
 document.addEventListener("DOMContentLoaded", function () {
